@@ -48,9 +48,9 @@ const Contact = () => {
               </p>
             </div>
 
-            <a href="mailto:abhishek@example.com" className="contact-animate glass flex items-center gap-4 rounded-xl p-4 text-foreground transition-all duration-300 hover:glow-blue" style={{ opacity: 0 }}>
+            <a href="mailto:choudhary9754abhi@gmail.com" className="contact-animate glass flex items-center gap-4 rounded-xl p-4 text-foreground transition-all duration-300 hover:glow-blue" style={{ opacity: 0 }}>
               <Mail className="h-5 w-5 text-primary" />
-              <span className="text-sm">abhishek@example.com</span>
+              <span className="text-sm">choudhary9754abhi@gmail.com</span>
             </a>
             <a href="tel:+919999999999" className="contact-animate glass flex items-center gap-4 rounded-xl p-4 text-foreground transition-all duration-300 hover:glow-blue" style={{ opacity: 0 }}>
               <Phone className="h-5 w-5 text-primary" />
