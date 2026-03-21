@@ -43,13 +43,14 @@ const Hero = () => {
           frameBorder="0"
           width="100%"
           height="100%"
-          className="pointer-events-none"
+          className="scale-110"
           title="3D Orb Background"
+          style={{ filter: "saturate(1.4) contrast(1.15) brightness(1.1)" }}
         />
       </div>
 
-      {/* Overlay */}
-      <div className="absolute inset-0 z-[1] bg-gradient-to-b from-background/60 via-background/40 to-background" />
+      {/* Subtle edge fade only — keeps the 3D vibrant and interactive */}
+      <div className="absolute inset-0 z-[1] pointer-events-none bg-gradient-to-b from-transparent via-transparent to-background/80" />
 
       {/* Content */}
       <div className="relative z-10 mx-auto max-w-4xl px-6 text-center">
