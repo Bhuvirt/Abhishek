@@ -2,12 +2,16 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Mail, Phone, Linkedin } from "lucide-react";
+import { toast } from "@/hooks/use-toast";
 
 gsap.registerPlugin(ScrollTrigger);
+
+const WEB3FORMS_KEY = "5e4c4564-fcc5-49e5-9617-93a92d389375";
 
 const Contact = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [sending, setSending] = useState(false);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -25,10 +29,33 @@ const Contact = () => {
     return () => ctx.revert();
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const mailtoLink = `mailto:abhishek@example.com?subject=Contact from ${form.name}&body=${encodeURIComponent(form.message)}%0A%0AFrom: ${form.email}`;
-    window.open(mailtoLink);
+    setSending(true);
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          name: form.name,
+          email: form.email,
+          message: form.message,
+          subject: `Portfolio Contact from ${form.name}`,
+        }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        toast({ title: "Message sent!", description: "Thanks for reaching out. I'll get back to you soon." });
+        setForm({ name: "", email: "", message: "" });
+      } else {
+        toast({ title: "Failed to send", description: "Something went wrong. Please try again.", variant: "destructive" });
+      }
+    } catch {
+      toast({ title: "Network error", description: "Please check your connection and try again.", variant: "destructive" });
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -90,10 +117,11 @@ const Contact = () => {
             />
             <button
               type="submit"
-              className="contact-animate mt-2 rounded-xl bg-gradient-to-r from-primary to-accent px-8 py-4 text-sm font-medium text-primary-foreground transition-all duration-300 hover:shadow-[0_0_30px_hsla(var(--neon-blue)/0.4)]"
+              disabled={sending}
+              className="contact-animate mt-2 rounded-xl bg-gradient-to-r from-primary to-accent px-8 py-4 text-sm font-medium text-primary-foreground transition-all duration-300 hover:shadow-[0_0_30px_hsla(var(--neon-blue)/0.4)] disabled:opacity-50 disabled:cursor-not-allowed"
               style={{ opacity: 0 }}
             >
-              Send Message
+              {sending ? "Sending..." : "Send Message"}
             </button>
           </form>
         </div>
