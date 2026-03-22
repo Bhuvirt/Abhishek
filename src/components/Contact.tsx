@@ -52,11 +52,11 @@ const Contact = () => {
               <Mail className="h-5 w-5 text-primary" />
               <span className="text-sm">choudhary9754abhi@gmail.com</span>
             </a>
-            <a href="tel:+919999999999" className="contact-animate glass flex items-center gap-4 rounded-xl p-4 text-foreground transition-all duration-300 hover:glow-blue" style={{ opacity: 0 }}>
+            <a href="tel:+916265649781" className="contact-animate glass flex items-center gap-4 rounded-xl p-4 text-foreground transition-all duration-300 hover:glow-blue" style={{ opacity: 0 }}>
               <Phone className="h-5 w-5 text-primary" />
-              <span className="text-sm">+91 99999 99999</span>
+              <span className="text-sm">+91 62656 49781</span>
             </a>
-            <a href="https://linkedin.com/in/abhishek" target="_blank" rel="noopener noreferrer" className="contact-animate glass flex items-center gap-4 rounded-xl p-4 text-foreground transition-all duration-300 hover:glow-blue" style={{ opacity: 0 }}>
+            <a href="https://www.linkedin.com/in/abhishek-choudhary-b8862220b/" target="_blank" rel="noopener noreferrer" className="contact-animate glass flex items-center gap-4 rounded-xl p-4 text-foreground transition-all duration-300 hover:glow-blue" style={{ opacity: 0 }}>
               <Linkedin className="h-5 w-5 text-primary" />
               <span className="text-sm">LinkedIn Profile</span>
             </a>
