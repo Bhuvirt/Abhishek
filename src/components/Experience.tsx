@@ -10,6 +10,7 @@ const experiences = [
     role: "Senior Executive, Client Engagement",
     period: "Feb 2025 – Present",
     current: true,
+    impact: "Managed large-scale campus hiring operations across India, ensuring seamless coordination between institutions and corporate hiring teams.",
     points: [
       "Executed 100+ campus hiring drives across 1,000+ universities",
       "Managed 10,000+ candidates through ATS platform",
@@ -25,6 +26,7 @@ const experiences = [
     role: "Lead Generation Executive",
     period: "Apr 2024 – Feb 2025",
     current: false,
+    impact: "Built and optimized global lead generation systems across multiple markets, improving outreach efficiency and conversion rates.",
     points: [
       "Generated 3000+ global leads (US, Europe, UAE, India)",
       "Increased demo bookings by 20% through outreach optimization",
@@ -38,6 +40,7 @@ const experiences = [
     role: "Business Developer",
     period: "Jul 2023 – Apr 2024",
     current: false,
+    impact: "Handled end-to-end client communication and ERP solution positioning in a fast-paced startup environment.",
     points: [
       "Worked on ERP solutions (SAP, Odoo, RPA)",
       "Managed client communication & sales cycle",
@@ -60,6 +63,17 @@ const Experience = () => {
           {
             opacity: 1, x: 0, y: 0, duration: 0.8, ease: "power3.out",
             scrollTrigger: { trigger: item, start: "top 80%" },
+          }
+        );
+      });
+
+      const impacts = sectionRef.current?.querySelectorAll(".impact-line");
+      impacts?.forEach((el) => {
+        gsap.fromTo(el,
+          { opacity: 0, filter: "blur(6px)", y: 10 },
+          {
+            opacity: 1, filter: "blur(0px)", y: 0, duration: 0.8, delay: 0.3, ease: "power3.out",
+            scrollTrigger: { trigger: el, start: "top 85%" },
           }
         );
       });
@@ -103,7 +117,10 @@ const Experience = () => {
                 <div className="glass rounded-xl p-6 transition-all duration-300 hover:glow-blue">
                   <span className="mb-1 inline-block text-xs font-medium text-primary">{exp.period}</span>
                   <h3 className="mb-1 text-lg font-bold text-foreground">{exp.company}</h3>
-                  <p className="mb-4 text-sm text-muted-foreground">{exp.role}</p>
+                  <p className="mb-3 text-sm text-muted-foreground">{exp.role}</p>
+                  <p className="impact-line mb-4 text-sm italic leading-relaxed text-primary/80" style={{ opacity: 0 }}>
+                    "{exp.impact}"
+                  </p>
                   <ul className={`space-y-2 text-sm text-muted-foreground ${i % 2 === 0 ? "md:text-right" : ""}`}>
                     {exp.points.map((point, j) => (
                       <li key={j} className="flex items-start gap-2">
