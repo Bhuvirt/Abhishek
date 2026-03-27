@@ -19,6 +19,7 @@ const Index = () => {
       <div style={{ opacity: loaded ? 1 : 0, transition: "opacity 0.6s ease" }}>
         <Navbar />
         <Hero />
+        <MetricsStrip />
         <About />
         <Experience />
         <Skills />
