@@ -7,16 +7,19 @@ gsap.registerPlugin(ScrollTrigger);
 const skillCategories = [
   {
     title: "Core Skills",
+    subtitle: "Execution-focused capabilities built through real-world operational experience.",
     color: "primary",
     skills: ["Client Engagement", "Stakeholder Management", "Recruitment Operations", "Program Coordination", "Process Optimization"],
   },
   {
     title: "Tools",
+    subtitle: "Platforms and systems used for outreach, automation, and data-driven decision making.",
     color: "accent",
     skills: ["Excel (Advanced)", "LinkedIn Sales Navigator", "Snov.io, Apollo, Lusha", "CRM tools (HubSpot, Salesforce basics)"],
   },
   {
     title: "Soft Skills",
+    subtitle: "Behavioral strengths that ensure consistent performance under pressure and complexity.",
     color: "primary",
     skills: ["Communication", "Adaptability", "Structured Thinking", "Calm Execution"],
   },
@@ -51,9 +54,10 @@ const Skills = () => {
         <div className="grid gap-8 md:grid-cols-3">
           {skillCategories.map((cat) => (
             <div key={cat.title} className="skill-card glass rounded-2xl p-6 transition-all duration-300 hover:glow-blue" style={{ opacity: 0 }}>
-              <h3 className={`mb-6 text-lg font-semibold ${cat.color === "primary" ? "text-primary" : "text-accent"}`}>
+              <h3 className={`mb-1 text-lg font-semibold ${cat.color === "primary" ? "text-primary" : "text-accent"}`}>
                 {cat.title}
               </h3>
+              <p className="mb-6 text-xs leading-relaxed text-muted-foreground/60">{cat.subtitle}</p>
               <div className="flex flex-wrap gap-2">
                 {cat.skills.map((skill) => (
                   <span
