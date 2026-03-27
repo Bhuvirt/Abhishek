@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import profileImg from "@/assets/profile.png";
-import { Users, MessageSquare, Settings, BarChart3, Briefcase } from "lucide-react";
+import { Users, MessageSquare, Settings, BarChart3, Briefcase, Workflow, Building2, ClipboardCheck, SearchCheck } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -14,11 +14,19 @@ const strengths = [
   { icon: Briefcase, label: "Recruitment Operations" },
 ];
 
+const whatIDo = [
+  { icon: Workflow, text: "Translate hiring requirements into structured workflows" },
+  { icon: Building2, text: "Coordinate across institutions, clients, and internal teams" },
+  { icon: ClipboardCheck, text: "Ensure seamless execution across assessments, interviews, and onboarding" },
+  { icon: SearchCheck, text: "Identify and resolve bottlenecks in high-volume operations" },
+];
+
 const About = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
   const skillsRef = useRef<HTMLDivElement>(null);
+  const whatRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -39,6 +47,14 @@ const About = () => {
           { opacity: 0, y: 30 },
           { opacity: 1, y: 0, duration: 0.5, stagger: 0.1, ease: "power3.out",
             scrollTrigger: { trigger: skillsRef.current, start: "top 80%" }
+          }
+        );
+      }
+      if (whatRef.current) {
+        gsap.fromTo(whatRef.current.children,
+          { opacity: 0, y: 25 },
+          { opacity: 1, y: 0, duration: 0.6, stagger: 0.12, ease: "power3.out",
+            scrollTrigger: { trigger: whatRef.current, start: "top 85%" }
           }
         );
       }
@@ -82,6 +98,30 @@ const About = () => {
                 </div>
               ))}
             </div>
+          </div>
+        </div>
+
+        {/* What I Actually Do */}
+        <div className="mt-20">
+          <h3 className="mb-3 text-center text-xl font-semibold text-foreground sm:text-2xl">
+            What I <span className="gradient-text">Actually Do</span>
+          </h3>
+          <p className="mx-auto mb-10 max-w-2xl text-center text-sm text-muted-foreground sm:text-base">
+            I operate at the intersection of people, processes, and execution.
+          </p>
+          <div ref={whatRef} className="mx-auto grid max-w-4xl grid-cols-1 gap-4 sm:grid-cols-2">
+            {whatIDo.map(({ icon: Icon, text }, i) => (
+              <div
+                key={i}
+                className="glass group flex items-start gap-4 rounded-xl px-5 py-5 transition-all duration-300 hover:glow-blue"
+                style={{ opacity: 0 }}
+              >
+                <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 transition-colors duration-300 group-hover:bg-primary/20">
+                  <Icon className="h-5 w-5 text-primary" />
+                </div>
+                <p className="text-sm leading-relaxed text-muted-foreground sm:text-base">{text}</p>
+              </div>
+            ))}
           </div>
         </div>
       </div>
