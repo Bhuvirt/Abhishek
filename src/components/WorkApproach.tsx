@@ -6,10 +6,10 @@ import { Search, Target, Zap, CheckCircle2 } from "lucide-react";
 gsap.registerPlugin(ScrollTrigger);
 
 const steps = [
-  { icon: Search, label: "Understand" },
-  { icon: Target, label: "Align" },
-  { icon: Zap, label: "Execute" },
-  { icon: CheckCircle2, label: "Deliver" },
+  { icon: Search, label: "Understand", desc: "Break down requirements into clear actionable steps" },
+  { icon: Target, label: "Align", desc: "Ensure all stakeholders are synchronized and informed" },
+  { icon: Zap, label: "Execute", desc: "Drive structured workflows with consistency" },
+  { icon: CheckCircle2, label: "Deliver", desc: "Complete processes with reliability and quality" },
 ];
 
 const WorkApproach = () => {
@@ -41,17 +41,18 @@ const WorkApproach = () => {
           I focus on clarity, structure, and execution—ensuring every moving part works in sync.
         </p>
 
-        <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center sm:gap-0">
-          {steps.map(({ icon: Icon, label }, i) => (
+        <div className="flex flex-col items-center gap-8 sm:flex-row sm:items-start sm:justify-center sm:gap-0">
+          {steps.map(({ icon: Icon, label, desc }, i) => (
             <div key={label} className="flex items-center gap-4 sm:gap-0">
-              <div className="approach-step flex flex-col items-center" style={{ opacity: 0 }}>
+              <div className="approach-step flex max-w-[160px] flex-col items-center text-center" style={{ opacity: 0 }}>
                 <div className="glass mb-3 flex h-16 w-16 items-center justify-center rounded-2xl transition-all duration-300 hover:glow-blue sm:h-20 sm:w-20">
                   <Icon className="h-7 w-7 text-primary sm:h-8 sm:w-8" />
                 </div>
                 <span className="text-sm font-medium text-foreground">{label}</span>
+                <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground/70">{desc}</p>
               </div>
               {i < steps.length - 1 && (
-                <div className="hidden h-px w-12 bg-gradient-to-r from-primary to-accent sm:block lg:w-20" />
+                <div className="hidden h-px w-12 bg-gradient-to-r from-primary to-accent sm:block lg:w-20" style={{ marginTop: '-2rem' }} />
               )}
             </div>
           ))}
