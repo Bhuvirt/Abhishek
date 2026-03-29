@@ -48,7 +48,16 @@ const Footer = () => {
         </div>
       </div>
 
-      <p className="mt-8 text-center text-xs text-muted-foreground">
+      <div className="mt-10 text-center animate-fade-in">
+        <p className="text-sm font-medium text-primary/80 glow-text-blue">
+          Open to Client Engagement &amp; Operations Opportunities
+        </p>
+        <p className="mt-1 text-xs text-muted-foreground/60">
+          Based in India | Available for On-site &amp; Remote Roles
+        </p>
+      </div>
+
+      <p className="mt-6 text-center text-xs text-muted-foreground">
         © {new Date().getFullYear()} Abhishek Choudhary. All rights reserved.
       </p>
     </footer>
