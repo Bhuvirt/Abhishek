@@ -8,7 +8,7 @@ const navLinks = [
 ];
 
 const socialLinks = [
-  { icon: Linkedin, href: "https://linkedin.com/in/abhishek", label: "LinkedIn" },
+  { icon: Linkedin, href: "https://www.linkedin.com/in/abhishek-choudhary-b8862220b/", label: "LinkedIn" },
   { icon: Github, href: "https://github.com/abhishek", label: "GitHub" },
   { icon: Mail, href: "mailto:abhishek@example.com", label: "Email" },
 ];
