@@ -5,6 +5,7 @@ import Hero from "@/components/Hero";
 import MetricsStrip from "@/components/MetricsStrip";
 import About from "@/components/About";
 import Experience from "@/components/Experience";
+import Hackathon from "@/components/Hackathon";
 import Challenges from "@/components/Challenges";
 import Skills from "@/components/Skills";
 import WorkApproach from "@/components/WorkApproach";
@@ -23,6 +24,7 @@ const Index = () => {
         <MetricsStrip />
         <About />
         <Experience />
+        <Hackathon />
         <Challenges />
         <Skills />
         <WorkApproach />
