@@ -1,7 +1,14 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 
-const heroMetrics = [
+type HeroMetric = {
+  value?: number;
+  suffix?: string;
+  text?: string;
+  label: string;
+};
+
+const heroMetrics: HeroMetric[] = [
   { value: 100, suffix: "+", label: "Hiring Drives Executed" },
   { value: 700, suffix: "+", label: "Stakeholders Coordinated" },
   { value: 10000, suffix: "+", label: "Candidates Managed" },
@@ -153,8 +160,8 @@ const Hero = () => {
               style={{ opacity: 0 }}
             >
               <p className="text-2xl font-extrabold tracking-tight text-foreground sm:text-3xl md:text-4xl glow-text-blue group-hover:glow-text-violet transition-all duration-300">
-                {"value" in m && typeof m.value === "number" ? (
-                  <CountUp target={m.value} suffix={m.suffix as string} />
+                {typeof m.value === "number" ? (
+                  <CountUp target={m.value} suffix={m.suffix ?? ""} />
                 ) : (
                   m.text
                 )}
