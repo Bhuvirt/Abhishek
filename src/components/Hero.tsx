@@ -1,30 +1,70 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
+
+type HeroMetric = {
+  value?: number;
+  suffix?: string;
+  text?: string;
+  label: string;
+};
+
+const heroMetrics: HeroMetric[] = [
+  { value: 100, suffix: "+", label: "Hiring Drives Executed" },
+  { value: 700, suffix: "+", label: "Stakeholders Coordinated" },
+  { value: 10000, suffix: "+", label: "Candidates Managed" },
+  { text: "Across India", label: "Recruitment Operations at Scale" },
+];
+
+const formatNumber = (n: number) => n.toLocaleString();
+
+const CountUp = ({ target, suffix }: { target: number; suffix: string }) => {
+  const [val, setVal] = useState(0);
+  const ref = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    const obj = { v: 0 };
+    const tween = gsap.to(obj, {
+      v: target,
+      duration: 2,
+      delay: 1,
+      ease: "power2.out",
+      onUpdate: () => setVal(Math.round(obj.v)),
+    });
+    return () => { tween.kill(); };
+  }, [target]);
+
+  return <span ref={ref}>{formatNumber(val)}{suffix}</span>;
+};
 
 const Hero = () => {
   const sectionRef = useRef<HTMLElement>(null);
+  const badgeRef = useRef<HTMLDivElement>(null);
   const headlineRef = useRef<HTMLHeadingElement>(null);
-  const subtitleRef = useRef<HTMLParagraphElement>(null);
   const descRef = useRef<HTMLParagraphElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
+  const metricsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const tl = gsap.timeline({ delay: 0.3 });
-    tl.fromTo(headlineRef.current, 
-      { opacity: 0, y: 60, filter: "blur(10px)" },
-      { opacity: 1, y: 0, filter: "blur(0px)", duration: 1.2, ease: "power3.out" }
+    tl.fromTo(badgeRef.current,
+      { opacity: 0, y: 20 },
+      { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }
     )
-    .fromTo(subtitleRef.current,
-      { opacity: 0, y: 30 },
-      { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, "-=0.5"
+    .fromTo(headlineRef.current, 
+      { opacity: 0, y: 60, filter: "blur(10px)" },
+      { opacity: 1, y: 0, filter: "blur(0px)", duration: 1.2, ease: "power3.out" }, "-=0.3"
     )
     .fromTo(descRef.current,
       { opacity: 0, y: 20 },
-      { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, "-=0.3"
+      { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, "-=0.5"
     )
     .fromTo(ctaRef.current?.children ? Array.from(ctaRef.current.children) : [],
       { opacity: 0, y: 20 },
       { opacity: 1, y: 0, duration: 0.5, stagger: 0.15, ease: "power3.out" }, "-=0.2"
+    )
+    .fromTo(metricsRef.current?.children ? Array.from(metricsRef.current.children) : [],
+      { opacity: 0, y: 40, scale: 0.95 },
+      { opacity: 1, y: 0, scale: 1, duration: 0.6, stagger: 0.15, ease: "power3.out" }, "-=0.1"
     );
 
     return () => { tl.kill(); };
@@ -35,7 +75,7 @@ const Hero = () => {
   };
 
   return (
-    <section ref={sectionRef} id="hero" className="relative flex min-h-screen items-center justify-center overflow-hidden">
+    <section ref={sectionRef} id="hero" className="relative flex min-h-screen items-center justify-center overflow-hidden py-28">
       {/* Spline 3D Background */}
       <div className="absolute inset-0 z-0">
         <iframe
@@ -53,43 +93,84 @@ const Hero = () => {
       <div className="absolute inset-0 z-[1] pointer-events-none bg-gradient-to-b from-transparent via-transparent to-background/80" />
 
       {/* Content */}
-      <div className="relative z-10 mx-auto max-w-4xl px-6 text-center">
+      <div className="relative z-10 mx-auto max-w-5xl px-6 text-center">
+        {/* Greeting badge */}
+        <div
+          ref={badgeRef}
+          className="mx-auto mb-6 inline-flex items-center gap-2 glass rounded-full px-5 py-2 text-sm font-medium tracking-wide text-primary glow-text-blue"
+          style={{ opacity: 0 }}
+        >
+          <span className="h-2 w-2 rounded-full bg-primary animate-pulse-glow" />
+          Hi, I'm Abhishek
+        </div>
+
         <h1
           ref={headlineRef}
-          className="mb-4 text-5xl font-bold tracking-tight text-foreground sm:text-6xl md:text-7xl lg:text-8xl"
+          className="mb-6 text-4xl font-bold leading-[1.1] tracking-tight text-foreground sm:text-5xl md:text-6xl lg:text-7xl"
           style={{ opacity: 0 }}
         >
-          Hi, I'm <span className="gradient-text">Abhishek</span>
+          Coordinating People,{" "}
+          <span className="gradient-text">Processes &amp; Execution</span>{" "}
+          at Scale
         </h1>
-        <p
-          ref={subtitleRef}
-          className="mb-4 text-lg font-medium tracking-wide text-primary sm:text-xl md:text-2xl glow-text-blue"
-          style={{ opacity: 0 }}
-        >
-          Client Engagement & Operations Specialist
-        </p>
+
         <p
           ref={descRef}
           className="mx-auto mb-10 max-w-2xl text-sm text-muted-foreground sm:text-base md:text-lg"
           style={{ opacity: 0 }}
         >
-          Bridging stakeholders, processes, and execution to deliver seamless outcomes at scale.
+          Executed 100+ hiring drives, coordinated 700+ stakeholders, and managed
+          recruitment operations for 10,000+ candidates across India.
         </p>
+
         <div ref={ctaRef} className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
           <button
             onClick={() => scrollTo("experience")}
-            className="glass rounded-full px-8 py-3 text-sm font-medium text-foreground transition-all duration-300 hover:glow-blue hover:border-primary/50 sm:text-base"
+            className="rounded-full bg-gradient-to-r from-primary to-accent px-8 py-3 text-sm font-medium text-primary-foreground transition-all duration-300 hover:shadow-[0_0_30px_hsla(var(--neon-blue)/0.4)] sm:text-base"
             style={{ opacity: 0 }}
           >
             View Experience
           </button>
+          <a
+            href="/Abhishek_Choudhary_Resume.pdf"
+            download
+            className="glass rounded-full px-8 py-3 text-sm font-medium text-foreground transition-all duration-300 hover:glow-blue hover:border-primary/50 sm:text-base"
+            style={{ opacity: 0 }}
+          >
+            Download Resume
+          </a>
           <button
             onClick={() => scrollTo("contact")}
-            className="rounded-full bg-gradient-to-r from-primary to-accent px-8 py-3 text-sm font-medium text-primary-foreground transition-all duration-300 hover:shadow-[0_0_30px_hsla(var(--neon-blue)/0.4)] sm:text-base"
+            className="glass rounded-full px-8 py-3 text-sm font-medium text-foreground transition-all duration-300 hover:glow-violet hover:border-accent/50 sm:text-base"
             style={{ opacity: 0 }}
           >
             Contact Me
           </button>
+        </div>
+
+        {/* Integrated achievement strip */}
+        <div
+          ref={metricsRef}
+          className="mt-14 grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-5"
+        >
+          {heroMetrics.map((m, i) => (
+            <div
+              key={i}
+              className="glass rounded-2xl p-5 text-center transition-all duration-300 hover:glow-blue group"
+              style={{ opacity: 0 }}
+            >
+              <p className="text-2xl font-extrabold tracking-tight text-foreground sm:text-3xl md:text-4xl glow-text-blue group-hover:glow-text-violet transition-all duration-300">
+                {typeof m.value === "number" ? (
+                  <CountUp target={m.value} suffix={m.suffix ?? ""} />
+                ) : (
+                  m.text
+                )}
+              </p>
+              <p className="mt-2 text-[0.65rem] font-medium uppercase tracking-widest text-muted-foreground sm:text-xs">
+                {m.label}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
 
