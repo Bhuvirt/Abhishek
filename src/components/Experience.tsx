@@ -1,6 +1,7 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ArrowRight, X } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -63,27 +64,19 @@ const experiences = [
 
 const Experience = () => {
   const sectionRef = useRef<HTMLElement>(null);
+  const overlayRef = useRef<HTMLDivElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
+  const [selected, setSelected] = useState<number | null>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
       const items = sectionRef.current?.querySelectorAll(".timeline-item");
-      items?.forEach((item, i) => {
+      items?.forEach((item) => {
         gsap.fromTo(item,
-          { opacity: 0, x: i % 2 === 0 ? -60 : 60, y: 30 },
+          { opacity: 0, y: 40 },
           {
-            opacity: 1, x: 0, y: 0, duration: 0.8, ease: "power3.out",
-            scrollTrigger: { trigger: item, start: "top 80%" },
-          }
-        );
-      });
-
-      const impacts = sectionRef.current?.querySelectorAll(".impact-line");
-      impacts?.forEach((el) => {
-        gsap.fromTo(el,
-          { opacity: 0, filter: "blur(6px)", y: 10 },
-          {
-            opacity: 1, filter: "blur(0px)", y: 0, duration: 0.8, delay: 0.3, ease: "power3.out",
-            scrollTrigger: { trigger: el, start: "top 85%" },
+            opacity: 1, y: 0, duration: 0.7, ease: "power3.out",
+            scrollTrigger: { trigger: item, start: "top 85%" },
           }
         );
       });
@@ -94,7 +87,7 @@ const Experience = () => {
           { scale: 0 },
           {
             scale: 1, duration: 0.5, ease: "back.out(2)",
-            scrollTrigger: { trigger: node, start: "top 85%" },
+            scrollTrigger: { trigger: node, start: "top 88%" },
           }
         );
       });
@@ -102,50 +95,126 @@ const Experience = () => {
     return () => ctx.revert();
   }, []);
 
+  // Animate panel open
+  useEffect(() => {
+    if (selected === null) return;
+    const isMobile = window.matchMedia("(max-width: 767px)").matches;
+    const tl = gsap.timeline();
+    if (overlayRef.current) {
+      tl.fromTo(overlayRef.current, { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out" }, 0);
+    }
+    if (panelRef.current) {
+      tl.fromTo(panelRef.current,
+        isMobile
+          ? { opacity: 0, y: 60, scale: 0.96, filter: "blur(8px)" }
+          : { opacity: 0, x: 80, filter: "blur(8px)" },
+        { opacity: 1, x: 0, y: 0, scale: 1, filter: "blur(0px)", duration: 0.5, ease: "power3.out" },
+        0.05
+      );
+    }
+    document.body.style.overflow = "hidden";
+    return () => { document.body.style.overflow = ""; };
+  }, [selected]);
+
+  const closePanel = () => {
+    const isMobile = window.matchMedia("(max-width: 767px)").matches;
+    const tl = gsap.timeline({ onComplete: () => setSelected(null) });
+    if (panelRef.current) {
+      tl.to(panelRef.current,
+        isMobile
+          ? { opacity: 0, y: 60, scale: 0.96, filter: "blur(8px)", duration: 0.35, ease: "power2.in" }
+          : { opacity: 0, x: 80, filter: "blur(8px)", duration: 0.35, ease: "power2.in" },
+        0
+      );
+    }
+    if (overlayRef.current) {
+      tl.to(overlayRef.current, { opacity: 0, duration: 0.3, ease: "power2.in" }, 0);
+    }
+  };
+
+  const exp = selected !== null ? experiences[selected] : null;
+
   return (
     <section ref={sectionRef} id="experience" className="relative px-6 py-24 md:py-32">
-      <div className="mx-auto max-w-5xl">
+      <div className="mx-auto max-w-3xl">
+        <p className="mb-3 text-center text-sm font-medium uppercase tracking-widest text-primary">
+          My Journey
+        </p>
         <h2 className="mb-16 text-center text-3xl font-bold text-foreground sm:text-4xl">
-          <span className="gradient-text">Experience</span>
+          Experience <span className="gradient-text">Timeline</span>
         </h2>
 
         <div className="relative">
           {/* Vertical line */}
-          <div className="absolute left-4 top-0 h-full w-px bg-gradient-to-b from-primary via-accent to-transparent md:left-1/2 md:-translate-x-px" />
+          <div className="absolute left-4 top-0 h-full w-px bg-gradient-to-b from-primary via-accent to-transparent" />
 
           {experiences.map((exp, i) => (
-            <div key={exp.company} className={`timeline-item relative mb-16 flex flex-col md:flex-row ${i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}`} style={{ opacity: 0 }}>
+            <div key={exp.company} className="timeline-item relative mb-8 pl-14" style={{ opacity: 0 }}>
               {/* Node */}
-              <div className="absolute left-4 top-0 z-10 md:left-1/2 md:-translate-x-1/2">
-                <div className={`timeline-node flex h-8 w-8 items-center justify-center rounded-full border-2 ${exp.current ? "border-primary glow-blue bg-primary/20" : "border-accent bg-accent/20"}`}>
-                  <div className={`h-3 w-3 rounded-full ${exp.current ? "bg-primary animate-pulse-glow" : "bg-accent"}`} />
+              <div className="absolute left-4 top-5 z-10 -translate-x-1/2">
+                <div className={`timeline-node flex h-8 w-8 items-center justify-center rounded-full border-2 transition-all duration-300 ${selected === i ? "border-primary glow-blue bg-primary/30" : exp.current ? "border-primary bg-primary/20" : "border-accent bg-accent/20"}`}>
+                  <div className={`h-3 w-3 rounded-full ${selected === i || exp.current ? "bg-primary animate-pulse-glow" : "bg-accent"}`} />
                 </div>
               </div>
 
-              {/* Content */}
-              <div className={`ml-14 w-full md:ml-0 md:w-[calc(50%-2rem)] ${i % 2 === 0 ? "md:pr-8 md:text-right" : "md:ml-auto md:pl-8"}`}>
-                <div className="glass rounded-xl p-6 transition-all duration-300 hover:glow-blue">
+              {/* Compact card */}
+              <button
+                onClick={() => setSelected(i)}
+                className="glass group flex w-full items-center justify-between rounded-xl p-5 text-left transition-all duration-300 hover:-translate-y-1 hover:glow-blue"
+              >
+                <div>
                   <span className="mb-1 inline-block text-xs font-medium text-primary">{exp.period}</span>
-                  <h3 className="mb-1 text-lg font-bold text-foreground">{exp.company}</h3>
-                  <p className="mb-3 text-sm text-muted-foreground">{exp.role}</p>
-                  <p className="impact-line mb-4 text-sm italic leading-relaxed text-primary/80" style={{ opacity: 0 }}>
-                    "{exp.impact}"
-                  </p>
-                  <ul className={`space-y-2 text-sm text-muted-foreground ${i % 2 === 0 ? "md:text-right" : ""}`}>
-                    {exp.points.map((point, j) => (
-                      <li key={j} className="flex items-start gap-2">
-                        {i % 2 !== 0 && <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />}
-                        <span className={i % 2 === 0 ? "md:ml-auto" : ""}>{point}</span>
-                        {i % 2 === 0 && <span className="mt-1.5 hidden h-1.5 w-1.5 shrink-0 rounded-full bg-primary md:block" />}
-                      </li>
-                    ))}
-                  </ul>
+                  <h3 className="text-lg font-bold text-foreground">{exp.company}</h3>
+                  <p className="text-sm text-muted-foreground">{exp.role}</p>
                 </div>
-              </div>
+                <ArrowRight className="h-5 w-5 shrink-0 text-primary transition-transform duration-300 group-hover:translate-x-1" />
+              </button>
             </div>
           ))}
         </div>
       </div>
+
+      {/* Detail panel */}
+      {exp && (
+        <div className="fixed inset-0 z-50 flex items-end justify-center md:items-stretch md:justify-end">
+          <div
+            ref={overlayRef}
+            onClick={closePanel}
+            className="absolute inset-0 bg-background/70 backdrop-blur-sm"
+            style={{ opacity: 0 }}
+          />
+          <div
+            ref={panelRef}
+            className="glass relative z-10 max-h-[85vh] w-full overflow-y-auto rounded-t-3xl p-7 md:max-h-full md:w-[28rem] md:rounded-none md:rounded-l-3xl"
+            style={{ opacity: 0 }}
+          >
+            <button
+              onClick={closePanel}
+              aria-label="Close panel"
+              className="absolute right-5 top-5 flex h-9 w-9 items-center justify-center rounded-full bg-primary/10 text-primary transition-colors hover:bg-primary/20"
+            >
+              <X className="h-5 w-5" />
+            </button>
+
+            <span className="mb-1 inline-block text-xs font-medium text-primary">{exp.period}</span>
+            <h3 className="text-2xl font-bold text-foreground">{exp.company}</h3>
+            <p className="mb-6 text-sm text-muted-foreground">{exp.role}</p>
+
+            <h4 className="mb-2 text-sm font-semibold uppercase tracking-wide text-primary">Impact Statement</h4>
+            <p className="mb-6 text-sm italic leading-relaxed text-foreground/90">"{exp.impact}"</p>
+
+            <h4 className="mb-3 text-sm font-semibold uppercase tracking-wide text-primary">Key Achievements</h4>
+            <ul className="space-y-2.5 text-sm text-muted-foreground">
+              {exp.points.map((point, j) => (
+                <li key={j} className="flex items-start gap-2.5">
+                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                  <span className="leading-relaxed">{point}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      )}
     </section>
   );
 };
