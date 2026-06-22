@@ -3,6 +3,7 @@ import Preloader from "@/components/Preloader";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
+import Philosophy from "@/components/Philosophy";
 import Experience from "@/components/Experience";
 import Hackathon from "@/components/Hackathon";
 import Challenges from "@/components/Challenges";
@@ -21,6 +22,7 @@ const Index = () => {
         <Navbar />
         <Hero />
         <About />
+        <Philosophy />
         <Experience />
         <Hackathon />
         <Challenges />
