@@ -2,6 +2,7 @@ import { useState } from "react";
 import Preloader from "@/components/Preloader";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import MetricsStrip from "@/components/MetricsStrip";
 import About from "@/components/About";
 import Philosophy from "@/components/Philosophy";
 import Experience from "@/components/Experience";
@@ -22,6 +23,7 @@ const Index = () => {
       <div style={{ opacity: loaded ? 1 : 0, transition: "opacity 0.6s ease" }}>
         <Navbar />
         <Hero />
+        <MetricsStrip />
         <About />
         <Philosophy />
         <Experience />

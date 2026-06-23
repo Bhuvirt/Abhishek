@@ -1,40 +1,6 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import gsap from "gsap";
-
-type HeroMetric = {
-  value?: number;
-  suffix?: string;
-  text?: string;
-  label: string;
-};
-
-const heroMetrics: HeroMetric[] = [
-  { value: 100, suffix: "+", label: "Hiring Drives Executed" },
-  { value: 700, suffix: "+", label: "Stakeholders Coordinated" },
-  { value: 10000, suffix: "+", label: "Candidates Managed" },
-  { text: "Across India", label: "Recruitment Operations at Scale" },
-];
-
-const formatNumber = (n: number) => n.toLocaleString();
-
-const CountUp = ({ target, suffix }: { target: number; suffix: string }) => {
-  const [val, setVal] = useState(0);
-  const ref = useRef<HTMLSpanElement>(null);
-
-  useEffect(() => {
-    const obj = { v: 0 };
-    const tween = gsap.to(obj, {
-      v: target,
-      duration: 2,
-      delay: 1,
-      ease: "power2.out",
-      onUpdate: () => setVal(Math.round(obj.v)),
-    });
-    return () => { tween.kill(); };
-  }, [target]);
-
-  return <span ref={ref}>{formatNumber(val)}{suffix}</span>;
-};
+import { Download } from "lucide-react";
 
 const Hero = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -42,7 +8,6 @@ const Hero = () => {
   const headlineRef = useRef<HTMLHeadingElement>(null);
   const descRef = useRef<HTMLParagraphElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
-  const metricsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const tl = gsap.timeline({ delay: 0.3 });
@@ -61,10 +26,6 @@ const Hero = () => {
     .fromTo(ctaRef.current?.children ? Array.from(ctaRef.current.children) : [],
       { opacity: 0, y: 20 },
       { opacity: 1, y: 0, duration: 0.5, stagger: 0.15, ease: "power3.out" }, "-=0.2"
-    )
-    .fromTo(metricsRef.current?.children ? Array.from(metricsRef.current.children) : [],
-      { opacity: 0, y: 40, scale: 0.95 },
-      { opacity: 1, y: 0, scale: 1, duration: 0.6, stagger: 0.15, ease: "power3.out" }, "-=0.1"
     );
 
     return () => { tl.kill(); };
@@ -126,7 +87,7 @@ const Hero = () => {
         <div ref={ctaRef} className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
           <button
             onClick={() => scrollTo("experience")}
-            className="rounded-full bg-gradient-to-r from-primary to-accent px-8 py-3 text-sm font-medium text-primary-foreground transition-all duration-300 hover:shadow-[0_0_30px_hsla(var(--neon-blue)/0.4)] sm:text-base"
+            className="rounded-full bg-gradient-to-r from-primary to-accent px-8 py-3 text-sm font-medium text-primary-foreground transition-all duration-300 hover:-translate-y-1 hover:scale-[1.03] hover:shadow-[0_0_40px_hsla(var(--neon-blue)/0.45)] sm:text-base"
             style={{ opacity: 0 }}
           >
             View Experience
@@ -134,44 +95,25 @@ const Hero = () => {
           <a
             href="/Abhishek_Choudhary_Resume.pdf"
             download
-            className="glass rounded-full px-8 py-3 text-sm font-medium text-foreground transition-all duration-300 hover:glow-blue hover:border-primary/50 sm:text-base"
+            className="group inline-flex items-center gap-2 glass rounded-full px-8 py-3 text-sm font-medium text-foreground transition-all duration-300 hover:-translate-y-1 hover:scale-[1.03] hover:border-primary/50 hover:shadow-[0_0_35px_hsla(var(--neon-blue)/0.35),0_0_65px_hsla(var(--neon-violet)/0.2)] sm:text-base"
             style={{ opacity: 0 }}
           >
+            <Download className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5" />
             Download Resume
           </a>
           <button
             onClick={() => scrollTo("contact")}
-            className="glass rounded-full px-8 py-3 text-sm font-medium text-foreground transition-all duration-300 hover:glow-violet hover:border-accent/50 sm:text-base"
+            className="glass rounded-full px-8 py-3 text-sm font-medium text-foreground transition-all duration-300 hover:-translate-y-1 hover:scale-[1.03] hover:border-accent/50 hover:shadow-[0_0_35px_hsla(var(--neon-violet)/0.35)] sm:text-base"
             style={{ opacity: 0 }}
           >
             Contact Me
           </button>
         </div>
 
-        {/* Integrated achievement strip */}
-        <div
-          ref={metricsRef}
-          className="mt-14 grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-5"
-        >
-          {heroMetrics.map((m, i) => (
-            <div
-              key={i}
-              className="glass rounded-2xl p-5 text-center transition-all duration-300 hover:glow-blue group"
-              style={{ opacity: 0 }}
-            >
-              <p className="text-2xl font-extrabold tracking-tight text-foreground sm:text-3xl md:text-4xl glow-text-blue group-hover:glow-text-violet transition-all duration-300">
-                {typeof m.value === "number" ? (
-                  <CountUp target={m.value} suffix={m.suffix ?? ""} />
-                ) : (
-                  m.text
-                )}
-              </p>
-              <p className="mt-2 text-[0.65rem] font-medium uppercase tracking-widest text-muted-foreground sm:text-xs">
-                {m.label}
-              </p>
-            </div>
-          ))}
-        </div>
+        <p className="mt-5 text-xs font-medium tracking-wide text-muted-foreground/80 sm:text-sm">
+          Available for Client Engagement, Operations, Program Management, and Recruitment Coordination opportunities.
+        </p>
+
       </div>
 
       {/* Floating elements */}
