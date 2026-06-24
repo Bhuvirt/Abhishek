@@ -17,7 +17,7 @@ const focusAreas = [
     description: "Creating structure, efficiency, and accountability across complex workflows.",
   },
   {
-    icon: KanbanSquare,
+    icon: Kanban,
     title: "Program Coordination",
     description: "Managing multiple moving parts while keeping teams aligned.",
   },
