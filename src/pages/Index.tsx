@@ -9,6 +9,7 @@ import Experience from "@/components/Experience";
 import Hackathon from "@/components/Hackathon";
 import Challenges from "@/components/Challenges";
 import Achievements from "@/components/Achievements";
+import CurrentFocus from "@/components/CurrentFocus";
 import Skills from "@/components/Skills";
 import WorkApproach from "@/components/WorkApproach";
 import Contact from "@/components/Contact";
@@ -30,6 +31,7 @@ const Index = () => {
         <Hackathon />
         <Challenges />
         <Achievements />
+        <CurrentFocus />
         <Skills />
         <WorkApproach />
         <Contact />
