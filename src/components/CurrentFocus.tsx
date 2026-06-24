@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Handshake, Workflow, KanbanSquare, Users, Rocket } from "lucide-react";
+import { Handshake, Workflow, Kanban, Users, Rocket } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
