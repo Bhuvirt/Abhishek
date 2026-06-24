@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Mail, Phone, Linkedin } from "lucide-react";
+import { Mail, Phone, Linkedin, MapPin, Briefcase, Monitor, Clock } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 
 gsap.registerPlugin(ScrollTrigger);
