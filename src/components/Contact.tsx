@@ -62,16 +62,15 @@ const Contact = () => {
     <section ref={sectionRef} id="contact" className="relative px-6 py-24 md:py-32">
       <div className="mx-auto max-w-4xl">
         <h2 className="mb-16 text-center text-3xl font-bold text-foreground sm:text-4xl">
-          Get In <span className="gradient-text">Touch</span>
+          Open to <span className="gradient-text">Opportunities</span>
         </h2>
 
         <div className="grid gap-12 md:grid-cols-2">
           {/* Info */}
           <div className="flex flex-col gap-6">
             <div className="contact-animate" style={{ opacity: 0 }}>
-              <h3 className="mb-4 text-xl font-semibold text-foreground">Let's Connect</h3>
-              <p className="mb-8 text-muted-foreground">
-                Have a project or opportunity in mind? I'd love to hear from you.
+              <p className="mb-8 leading-relaxed text-muted-foreground">
+                Interested in discussing Client Engagement, Operations, Program Management, Recruitment Coordination, or Implementation opportunities? I'd be happy to connect.
               </p>
             </div>
 
@@ -89,41 +88,70 @@ const Contact = () => {
             </a>
           </div>
 
-          {/* Form */}
-          <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-            {[
-              { name: "name" as const, placeholder: "Your Name", type: "text" },
-              { name: "email" as const, placeholder: "Your Email", type: "email" },
-            ].map((field) => (
-              <input
-                key={field.name}
-                type={field.type}
-                placeholder={field.placeholder}
+          {/* Form + Info Card */}
+          <div className="flex flex-col gap-6">
+            <div className="contact-animate glass grid grid-cols-1 gap-4 rounded-2xl p-6 transition-all duration-300 hover:glow-blue sm:grid-cols-2" style={{ opacity: 0 }}>
+              {[
+                { icon: MapPin, label: "Location", value: "India" },
+                { icon: Briefcase, label: "Availability", value: "Open to Full-Time Opportunities" },
+                { icon: Monitor, label: "Work Preference", value: "On-site, Hybrid, or Remote" },
+                { icon: Clock, label: "Response Time", value: "Typically within 24 hours" },
+              ].map((item, index) => {
+                const Icon = item.icon;
+                return (
+                  <div
+                    key={index}
+                    className="group flex items-start gap-3 rounded-xl p-3 transition-all duration-300 hover:bg-primary/5"
+                  >
+                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-primary/20 bg-primary/10 text-primary transition-all duration-300 group-hover:scale-110 group-hover:border-primary/40">
+                      <Icon className="h-4 w-4" strokeWidth={1.5} />
+                    </div>
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                        {item.label}
+                      </p>
+                      <p className="text-sm font-medium text-foreground">{item.value}</p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+              {[
+                { name: "name" as const, placeholder: "Your Name", type: "text" },
+                { name: "email" as const, placeholder: "Your Email", type: "email" },
+              ].map((field) => (
+                <input
+                  key={field.name}
+                  type={field.type}
+                  placeholder={field.placeholder}
+                  required
+                  value={form[field.name]}
+                  onChange={(e) => setForm((f) => ({ ...f, [field.name]: e.target.value }))}
+                  className="contact-animate glass rounded-xl border-transparent bg-muted/30 px-5 py-4 text-sm text-foreground outline-none transition-all duration-300 placeholder:text-muted-foreground focus:border-primary/50 focus:shadow-[0_0_20px_hsla(var(--neon-blue)/0.2)]"
+                  style={{ opacity: 0 }}
+                />
+              ))}
+              <textarea
+                placeholder="Your Message"
                 required
-                value={form[field.name]}
-                onChange={(e) => setForm((f) => ({ ...f, [field.name]: e.target.value }))}
-                className="contact-animate glass rounded-xl border-transparent bg-muted/30 px-5 py-4 text-sm text-foreground outline-none transition-all duration-300 placeholder:text-muted-foreground focus:border-primary/50 focus:shadow-[0_0_20px_hsla(var(--neon-blue)/0.2)]"
+                rows={5}
+                value={form.message}
+                onChange={(e) => setForm((f) => ({ ...f, message: e.target.value }))}
+                className="contact-animate glass resize-none rounded-xl border-transparent bg-muted/30 px-5 py-4 text-sm text-foreground outline-none transition-all duration-300 placeholder:text-muted-foreground focus:border-primary/50 focus:shadow-[0_0_20px_hsla(var(--neon-blue)/0.2)]"
                 style={{ opacity: 0 }}
               />
-            ))}
-            <textarea
-              placeholder="Your Message"
-              required
-              rows={5}
-              value={form.message}
-              onChange={(e) => setForm((f) => ({ ...f, message: e.target.value }))}
-              className="contact-animate glass resize-none rounded-xl border-transparent bg-muted/30 px-5 py-4 text-sm text-foreground outline-none transition-all duration-300 placeholder:text-muted-foreground focus:border-primary/50 focus:shadow-[0_0_20px_hsla(var(--neon-blue)/0.2)]"
-              style={{ opacity: 0 }}
-            />
-            <button
-              type="submit"
-              disabled={sending}
-              className="contact-animate mt-2 rounded-xl bg-gradient-to-r from-primary to-accent px-8 py-4 text-sm font-medium text-primary-foreground transition-all duration-300 hover:shadow-[0_0_30px_hsla(var(--neon-blue)/0.4)] disabled:opacity-50 disabled:cursor-not-allowed"
-              style={{ opacity: 0 }}
-            >
-              {sending ? "Sending..." : "Send Message"}
-            </button>
-          </form>
+              <button
+                type="submit"
+                disabled={sending}
+                className="contact-animate mt-2 rounded-xl bg-gradient-to-r from-primary to-accent px-8 py-4 text-sm font-medium text-primary-foreground transition-all duration-300 hover:shadow-[0_0_30px_hsla(var(--neon-blue)/0.4)] disabled:opacity-50 disabled:cursor-not-allowed"
+                style={{ opacity: 0 }}
+              >
+                {sending ? "Sending..." : "Send Message"}
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     </section>
