@@ -1,6 +1,8 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { Download } from "lucide-react";
+import resumeAsset from "@/assets/Abhishek_Choudhary_Resume.pdf.asset.json";
+
 
 const Hero = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -93,8 +95,8 @@ const Hero = () => {
             View Experience
           </button>
           <a
-            href="/Abhishek_Choudhary_Resume.pdf"
-            download
+            href={resumeAsset.url}
+            download="Abhishek_Choudhary_Resume.pdf"
             className="group inline-flex items-center gap-2 glass rounded-full px-8 py-3 text-sm font-medium text-foreground transition-all duration-300 hover:-translate-y-1 hover:scale-[1.03] hover:border-primary/50 hover:shadow-[0_0_35px_hsla(var(--neon-blue)/0.35),0_0_65px_hsla(var(--neon-violet)/0.2)] sm:text-base"
             style={{ opacity: 0 }}
           >
