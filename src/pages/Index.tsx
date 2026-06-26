@@ -30,11 +30,13 @@ const Index = () => {
         <About />
         <Philosophy />
         <Experience />
+        <CareerEvolution />
         <Hackathon />
         <Challenges />
         <Achievements />
         <CurrentFocus />
         <Skills />
+        <WhyTeamsTrust />
         <WorkApproach />
         <Contact />
         <Footer />
