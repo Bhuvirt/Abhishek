@@ -6,11 +6,13 @@ import MetricsStrip from "@/components/MetricsStrip";
 import About from "@/components/About";
 import Philosophy from "@/components/Philosophy";
 import Experience from "@/components/Experience";
+import CareerEvolution from "@/components/CareerEvolution";
 import Hackathon from "@/components/Hackathon";
 import Challenges from "@/components/Challenges";
 import Achievements from "@/components/Achievements";
 import CurrentFocus from "@/components/CurrentFocus";
 import Skills from "@/components/Skills";
+import WhyTeamsTrust from "@/components/WhyTeamsTrust";
 import WorkApproach from "@/components/WorkApproach";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
@@ -28,11 +30,13 @@ const Index = () => {
         <About />
         <Philosophy />
         <Experience />
+        <CareerEvolution />
         <Hackathon />
         <Challenges />
         <Achievements />
         <CurrentFocus />
         <Skills />
+        <WhyTeamsTrust />
         <WorkApproach />
         <Contact />
         <Footer />

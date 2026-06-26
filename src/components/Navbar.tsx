@@ -5,10 +5,12 @@ const links = [
   { label: "About", href: "#about" },
   { label: "Impact", href: "#impact" },
   { label: "Experience", href: "#experience" },
+  { label: "Evolution", href: "#evolution" },
   { label: "Hackathon", href: "#hackathon" },
   { label: "Achievements", href: "#achievements" },
   { label: "Focus", href: "#focus" },
   { label: "Skills", href: "#skills" },
+  { label: "Trust", href: "#trust" },
   { label: "Approach", href: "#approach" },
   { label: "Contact", href: "#contact" },
 ];
