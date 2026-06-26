@@ -1,6 +1,8 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { Download } from "lucide-react";
+import resumeAsset from "@/assets/Abhishek_Choudhary_Resume.pdf.asset.json";
+
 
 const Hero = () => {
   const sectionRef = useRef<HTMLElement>(null);
