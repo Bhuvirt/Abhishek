@@ -1,8 +1,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import profileImg from "@/assets/profile.png";
-import { Target, ShieldCheck, MessageSquare, Zap } from "lucide-react";
+import { Target, ShieldCheck, MessageSquare, Zap, Compass, Layers } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -15,24 +14,33 @@ const principles = [
 
 const Philosophy = () => {
   const sectionRef = useRef<HTMLElement>(null);
-  const imageRef = useRef<HTMLDivElement>(null);
-  const textRef = useRef<HTMLDivElement>(null);
+  const headlineRef = useRef<HTMLDivElement>(null);
+  const visualRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.fromTo(imageRef.current,
-        { opacity: 0, x: -80 },
-        { opacity: 1, x: 0, duration: 1, ease: "power3.out",
+      gsap.fromTo(headlineRef.current,
+        { opacity: 0, y: 60 },
+        { opacity: 1, y: 0, duration: 1, ease: "power3.out",
           scrollTrigger: { trigger: sectionRef.current, start: "top 75%" }
         }
       );
-      gsap.fromTo(textRef.current,
-        { opacity: 0, y: 40 },
-        { opacity: 1, y: 0, duration: 0.8, ease: "power3.out",
-          scrollTrigger: { trigger: sectionRef.current, start: "top 70%" }
-        }
-      );
+      if (visualRef.current) {
+        gsap.fromTo(visualRef.current,
+          { opacity: 0, scale: 0.92, y: 40 },
+          { opacity: 1, scale: 1, y: 0, duration: 1.1, ease: "power3.out",
+            scrollTrigger: { trigger: visualRef.current, start: "top 80%" }
+          }
+        );
+        const orbitals = visualRef.current.querySelectorAll(".orbital-node");
+        gsap.fromTo(orbitals,
+          { opacity: 0, scale: 0.5 },
+          { opacity: 1, scale: 1, duration: 0.6, stagger: 0.12, ease: "back.out(1.7)",
+            scrollTrigger: { trigger: visualRef.current, start: "top 75%" }
+          }
+        );
+      }
       if (cardsRef.current) {
         gsap.fromTo(cardsRef.current.children,
           { opacity: 0, y: 50 },
@@ -46,42 +54,98 @@ const Philosophy = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} id="philosophy" className="relative px-6 py-24 md:py-32">
-      <div className="mx-auto max-w-6xl">
+    <section ref={sectionRef} id="philosophy" className="relative overflow-hidden px-6 py-24 md:py-32">
+      {/* Ambient background glows */}
+      <div className="absolute left-1/4 top-0 h-96 w-96 rounded-full bg-primary/5 blur-3xl" />
+      <div className="absolute bottom-0 right-1/4 h-80 w-80 rounded-full bg-accent/5 blur-3xl" />
+
+      <div className="relative mx-auto max-w-6xl">
         <p className="mb-3 text-center text-sm font-medium uppercase tracking-widest text-primary">
           My Professional Philosophy
         </p>
-        <h2 className="mb-16 text-center text-3xl font-bold text-foreground sm:text-4xl">
-          How I Approach <span className="gradient-text">Complex Operations</span>
-        </h2>
 
-        <div className="grid items-center gap-12 md:grid-cols-2">
-          {/* Image */}
-          <div ref={imageRef} className="flex justify-center" style={{ opacity: 0 }}>
-            <div className="group relative h-72 w-72 sm:h-80 sm:w-80">
-              <div className="absolute -inset-1 rounded-full bg-gradient-to-tr from-primary to-accent opacity-50 blur-lg transition-opacity duration-500 group-hover:opacity-80" />
-              <div className="relative h-full w-full overflow-hidden rounded-full border-2 border-border transition-transform duration-500 group-hover:-translate-y-2 group-hover:rotate-2">
-                <img src={profileImg} alt="Abhishek Choudhary" className="h-full w-full object-cover" />
-              </div>
+        {/* Manifesto headline */}
+        <div ref={headlineRef} className="mx-auto mb-16 max-w-4xl text-center" style={{ opacity: 0 }}>
+          <h2 className="mb-6 text-3xl font-bold leading-tight text-foreground sm:text-4xl md:text-5xl">
+            How I Approach{" "}
+            <span className="gradient-text">Complex Operations</span>
+          </h2>
+          <div className="mx-auto mb-8 h-1 w-20 rounded-full bg-gradient-to-r from-primary to-accent" />
+          <p className="text-lg leading-relaxed text-muted-foreground sm:text-xl">
+            I believe successful operations are built on three things:{" "}
+            <span className="font-semibold text-foreground">clarity, accountability, and communication.</span>
+            {" "}Whether coordinating a nationwide hiring campaign, managing institutional stakeholders,
+            or solving process bottlenecks, my focus remains the same — create structure where
+            complexity exists and ensure every stakeholder stays aligned.
+          </p>
+        </div>
+
+        {/* Abstract operations network visual */}
+        <div
+          ref={visualRef}
+          className="glass mx-auto mb-20 flex max-w-3xl flex-col items-center justify-center rounded-3xl p-8 md:p-12"
+          style={{ opacity: 0 }}
+        >
+          <div className="relative flex h-56 w-full items-center justify-center sm:h-72">
+            {/* Central core */}
+            <div className="orbital-node absolute z-20 flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-primary to-accent shadow-[0_0_40px_hsla(var(--neon-blue)/0.4)]">
+              <Compass className="h-8 w-8 text-primary-foreground" />
+            </div>
+
+            {/* Orbital ring 1 */}
+            <div className="absolute h-40 w-40 rounded-full border border-dashed border-border/60 sm:h-52 sm:w-52" />
+
+            {/* Orbital nodes */}
+            <div className="orbital-node absolute left-[20%] top-[15%] flex h-11 w-11 items-center justify-center rounded-full bg-card/80 border border-border shadow-lg shadow-primary/20">
+              <Target className="h-5 w-5 text-primary" />
+            </div>
+            <div className="orbital-node absolute right-[20%] top-[15%] flex h-11 w-11 items-center justify-center rounded-full bg-card/80 border border-border shadow-lg shadow-accent/20">
+              <ShieldCheck className="h-5 w-5 text-accent" />
+            </div>
+            <div className="orbital-node absolute bottom-[15%] left-[25%] flex h-11 w-11 items-center justify-center rounded-full bg-card/80 border border-border shadow-lg shadow-primary/20">
+              <MessageSquare className="h-5 w-5 text-primary" />
+            </div>
+            <div className="orbital-node absolute bottom-[15%] right-[25%] flex h-11 w-11 items-center justify-center rounded-full bg-card/80 border border-border shadow-lg shadow-accent/20">
+              <Zap className="h-5 w-5 text-accent" />
+            </div>
+
+            {/* Connection lines (SVG overlay) */}
+            <svg className="absolute inset-0 h-full w-full" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="line-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="hsl(var(--neon-blue))" stopOpacity="0.4" />
+                  <stop offset="100%" stopColor="hsl(var(--neon-violet))" stopOpacity="0.4" />
+                </linearGradient>
+              </defs>
+              <line x1="50%" y1="50%" x2="20%" y2="15%" stroke="url(#line-grad)" strokeWidth="1" />
+              <line x1="50%" y1="50%" x2="80%" y2="15%" stroke="url(#line-grad)" strokeWidth="1" />
+              <line x1="50%" y1="50%" x2="25%" y2="85%" stroke="url(#line-grad)" strokeWidth="1" />
+              <line x1="50%" y1="50%" x2="75%" y2="85%" stroke="url(#line-grad)" strokeWidth="1" />
+            </svg>
+
+            {/* Floating labels */}
+            <div className="absolute left-2 top-2 hidden text-[10px] uppercase tracking-wider text-muted-foreground/70 sm:block">
+              Stakeholders
+            </div>
+            <div className="absolute right-2 top-2 hidden text-[10px] uppercase tracking-wider text-muted-foreground/70 sm:block">
+              Processes
+            </div>
+            <div className="absolute bottom-2 left-2 hidden text-[10px] uppercase tracking-wider text-muted-foreground/70 sm:block">
+              Outcomes
+            </div>
+            <div className="absolute bottom-2 right-2 hidden text-[10px] uppercase tracking-wider text-muted-foreground/70 sm:block">
+              Execution
             </div>
           </div>
 
-          {/* Text */}
-          <div ref={textRef} style={{ opacity: 0 }}>
-            <p className="mb-6 text-base leading-relaxed text-foreground sm:text-lg">
-              I believe successful operations are built on three things:{" "}
-              <span className="gradient-text font-semibold">clarity, accountability, and communication.</span>
-            </p>
-            <p className="text-base leading-relaxed text-muted-foreground sm:text-lg">
-              Whether coordinating a nationwide hiring campaign, managing institutional stakeholders,
-              or solving process bottlenecks, my focus remains the same—create structure where complexity
-              exists and ensure every stakeholder stays aligned.
-            </p>
+          <div className="mt-6 flex items-center gap-3 text-sm text-muted-foreground">
+            <Layers className="h-4 w-4 text-primary" />
+            <span>Every moving part connected, every stakeholder aligned.</span>
           </div>
         </div>
 
         {/* Principle cards */}
-        <div ref={cardsRef} className="mt-16 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div ref={cardsRef} className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {principles.map(({ icon: Icon, title, text }) => (
             <div
               key={title}
