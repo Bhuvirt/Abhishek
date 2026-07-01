@@ -1,8 +1,33 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { Download } from "lucide-react";
 import resumeAsset from "@/assets/Abhishek_Choudhary_Resume.pdf.asset.json";
 
+const heroMetrics = [
+  { value: 120, suffix: "+", label: "Hiring Drives Executed" },
+  { value: 700, suffix: "+", label: "Stakeholders Coordinated" },
+  { value: 10000, suffix: "+", label: "Candidates Managed" },
+  { value: 3000, suffix: "+", label: "Global Leads Generated" },
+];
+
+const CountUp = ({ target, suffix }: { target: number; suffix: string }) => {
+  const [val, setVal] = useState(0);
+  const ref = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    const obj = { v: 0 };
+    const tween = gsap.to(obj, {
+      v: target,
+      duration: 2,
+      delay: 1.2,
+      ease: "power2.out",
+      onUpdate: () => setVal(Math.round(obj.v)),
+    });
+    return () => { tween.kill(); };
+  }, [target]);
+
+  return <span ref={ref}>{val.toLocaleString()}{suffix}</span>;
+};
 
 const Hero = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -10,6 +35,7 @@ const Hero = () => {
   const headlineRef = useRef<HTMLHeadingElement>(null);
   const descRef = useRef<HTMLParagraphElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
+  const metricsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const tl = gsap.timeline({ delay: 0.3 });
@@ -28,6 +54,10 @@ const Hero = () => {
     .fromTo(ctaRef.current?.children ? Array.from(ctaRef.current.children) : [],
       { opacity: 0, y: 20 },
       { opacity: 1, y: 0, duration: 0.5, stagger: 0.15, ease: "power3.out" }, "-=0.2"
+    )
+    .fromTo(metricsRef.current,
+      { opacity: 0, y: 30 },
+      { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, "-=0.1"
     );
 
     return () => { tl.kill(); };
@@ -60,11 +90,11 @@ const Hero = () => {
         {/* Greeting badge */}
         <div
           ref={badgeRef}
-          className="mx-auto mb-6 inline-flex items-center gap-2 glass rounded-full px-5 py-2 text-sm font-medium tracking-wide text-primary glow-text-blue"
+          className="mx-auto mb-6 inline-flex items-center gap-2 glass rounded-full px-5 py-2 text-xs font-medium uppercase tracking-[0.25em] text-primary glow-text-blue sm:text-sm"
           style={{ opacity: 0 }}
         >
           <span className="h-2 w-2 rounded-full bg-primary animate-pulse-glow" />
-          Hi, I'm Abhishek
+          Hello, I'm Abhishek
         </div>
 
         <h1
@@ -72,18 +102,18 @@ const Hero = () => {
           className="mb-6 text-4xl font-bold leading-[1.1] tracking-tight text-foreground sm:text-5xl md:text-6xl lg:text-7xl"
           style={{ opacity: 0 }}
         >
-          Coordinating People,{" "}
-          <span className="gradient-text">Processes &amp; Execution</span>{" "}
-          at Scale
+          Bringing <span className="gradient-text">Structure</span> to Complexity.
         </h1>
 
         <p
           ref={descRef}
-          className="mx-auto mb-10 max-w-2xl text-sm text-muted-foreground sm:text-base md:text-lg"
+          className="mx-auto mb-10 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base md:text-lg"
           style={{ opacity: 0 }}
         >
-          Executed 100+ hiring drives, coordinated 700+ stakeholders, and managed
-          recruitment operations for 10,000+ candidates across India.
+          Every role I've taken has taught me the same lesson—meaningful execution
+          happens when people, processes, and technology move together. That idea
+          has shaped the way I approach operations, client engagement, and solving
+          complex organizational challenges.
         </p>
 
         <div ref={ctaRef} className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
@@ -92,7 +122,7 @@ const Hero = () => {
             className="rounded-full bg-gradient-to-r from-primary to-accent px-8 py-3 text-sm font-medium text-primary-foreground transition-all duration-300 hover:-translate-y-1 hover:scale-[1.03] hover:shadow-[0_0_40px_hsla(var(--neon-blue)/0.45)] sm:text-base"
             style={{ opacity: 0 }}
           >
-            View Experience
+            Explore My Journey
           </button>
           <a
             href={resumeAsset.url}
@@ -108,14 +138,31 @@ const Hero = () => {
             className="glass rounded-full px-8 py-3 text-sm font-medium text-foreground transition-all duration-300 hover:-translate-y-1 hover:scale-[1.03] hover:border-accent/50 hover:shadow-[0_0_35px_hsla(var(--neon-violet)/0.35)] sm:text-base"
             style={{ opacity: 0 }}
           >
-            Contact Me
+            Let's Connect
           </button>
         </div>
 
-        <p className="mt-5 text-xs font-medium tracking-wide text-muted-foreground/80 sm:text-sm">
-          Available for Client Engagement, Operations, Program Management, and Recruitment Coordination opportunities.
-        </p>
-
+        {/* Impact in Numbers — evidence supporting the story above */}
+        <div ref={metricsRef} className="mt-16" style={{ opacity: 0 }}>
+          <p className="mb-6 text-xs font-semibold uppercase tracking-[0.25em] text-muted-foreground/80">
+            Impact in Numbers
+          </p>
+          <div className="mx-auto grid max-w-3xl grid-cols-2 gap-4 sm:grid-cols-4">
+            {heroMetrics.map((m, i) => (
+              <div
+                key={i}
+                className="glass rounded-2xl px-5 py-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-[0_0_30px_hsla(var(--neon-blue)/0.2)]"
+              >
+                <p className="text-2xl font-extrabold tracking-tight text-foreground glow-text-blue sm:text-3xl">
+                  <CountUp target={m.value} suffix={m.suffix} />
+                </p>
+                <p className="mt-2 text-[0.7rem] font-medium uppercase tracking-wider text-muted-foreground sm:text-xs">
+                  {m.label}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
 
       {/* Floating elements */}
