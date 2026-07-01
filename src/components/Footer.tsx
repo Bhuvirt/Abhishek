@@ -1,7 +1,7 @@
 import { Linkedin, Mail } from "lucide-react";
 
 const navLinks = [
-  { label: "About", href: "#about" },
+  { label: "The Lens", href: "#lens" },
   { label: "Experience", href: "#experience" },
   { label: "Skills", href: "#skills" },
   { label: "Contact", href: "#contact" },
