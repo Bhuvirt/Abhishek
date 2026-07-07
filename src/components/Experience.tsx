@@ -5,60 +5,100 @@ import { ArrowRight, X } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const experiences = [
+type Experience = {
+  company: string;
+  role: string;
+  period: string;
+  current: boolean;
+  summary: string;
+  impact: string;
+  responsibilities: string[];
+  achievements: string[];
+  learnings: string[];
+  technologies: string[];
+};
+
+const experiences: Experience[] = [
   {
     company: "POD.ai",
     role: "Senior Executive, Client Engagement",
     period: "Feb 2025 – Present",
     current: true,
-    impact: "Managed large-scale campus hiring operations across India, ensuring seamless coordination between institutions and corporate hiring teams.",
-    points: [
-      "Executed 100+ campus hiring drives across 1,000+ universities, processing 10,000+ candidates on the Pod.ai ATS platform",
-      "Coordinated national recruitment pipelines for Fortune 500 technology firms while managing high-stakes relations with placement cells at elite, Tier-1 engineering and business institutions",
-      "Managed 700+ Training & Placement Officers during peak seasons to maximize candidate participation for multi-client hiring programs",
-      "Partnered with Head HR and senior leadership to translate hiring mandates into large-scale campus recruitment campaigns",
-      "Coordinated 3–4 concurrent national hiring programs, handling registration setup, assessments, interview scheduling and offer management",
-      "Eliminated external link-shortening dependency by redesigning internal registration workflows for hiring drives",
-      "Created internal platform knowledge repository (\"Pod Encyclopedia\") improving onboarding and platform adoption across teams",
-      "Deployed to multiple university campuses across the North India region to execute large-scale pool recruitment events, personally managed 3,000+ students on-site, fast-paced under pressure, real-time query resolutions, and ensuring compliance with evaluation standards",
+    summary:
+      "Coordinating nationwide campus hiring programs, keeping institutions and corporate teams moving in sync.",
+    impact:
+      "Turned fragmented, high-pressure hiring seasons into structured, repeatable programs that leadership could rely on.",
+    responsibilities: [
+      "Coordinate 3–4 concurrent national hiring programs end to end — registration, assessments, interview scheduling and offers.",
+      "Manage relationships with placement cells across Tier-1 engineering and business institutions.",
+      "Partner with Head HR and senior leadership to translate hiring mandates into campus campaigns.",
+      "Lead on-site pool recruitment events, resolving queries and ensuring evaluation compliance in real time.",
     ],
+    achievements: [
+      "Executed 100+ campus drives across 1,000+ universities, processing 10,000+ candidates.",
+      "Managed 700+ Training & Placement Officers during peak seasons.",
+      "Personally handled 3,000+ students on-site across North India campuses.",
+      "Built the internal “Pod Encyclopedia” to speed up onboarding and platform adoption.",
+    ],
+    learnings: [
+      "Scale is a coordination problem before it is a resourcing one.",
+      "Clear systems calm chaos faster than extra effort does.",
+    ],
+    technologies: ["Pod.ai ATS", "Assessment platforms", "Interview scheduling", "Workflow design"],
   },
   {
     company: "ServerGuy / Breeze.io",
     role: "Executive – Lead Generation",
     period: "Apr 2024 – Feb 2025",
     current: false,
-    impact: "Built and optimized global lead generation systems across multiple markets, improving outreach efficiency and conversion rates.",
-    points: [
-      "Identified 3,000+ high-value leads across USA, Europe, UAE, and India through targeted market research",
-      "Increased cold-calling outreach during peak season, resulting in 20% more product demos scheduled",
-      "Built strategic partnerships with Magento development agencies, generating 5+ recurring referral collaborations",
-      "Ran A/B tested drip email campaigns, achieving 45% average open rates and 20% increase in lead inquiries",
-      "Conducted product pitches, partnership discussions, and follow-ups to convert opportunities",
-      "Managed client queries via website webchat and created proposals, product presentations, and sales documentation",
-      "Led prospecting for GPU hosting, WooCommerce hosting, WordPress hosting, and cloud infrastructure, identifying 1,500+ qualified US leads within one week",
-      "Designed multi-channel outreach strategies using LinkedIn Sales Navigator and cold email automation, increasing Sales Qualified Leads by 30%",
-      "Conducted competitor research and positioning analysis, improving campaign performance by 15%",
-      "Optimized the lead nurturing workflow, reducing response time by 40% while handling live webchat",
-      "Collaborated closely with the sales team to streamline product demos, proposals, and client engagement processes",
+    summary:
+      "Building global lead-generation systems across markets, tuning outreach for signal over noise.",
+    impact:
+      "Replaced scattered outreach with measurable pipelines, lifting qualified leads and cutting response time.",
+    responsibilities: [
+      "Research and qualify high-value leads across the USA, Europe, UAE and India.",
+      "Design multi-channel outreach across LinkedIn Sales Navigator and cold email automation.",
+      "Run product pitches, partnership discussions and proposal creation.",
+      "Handle live webchat queries and streamline the lead-nurturing workflow.",
     ],
+    achievements: [
+      "Identified 3,000+ high-value leads across four regions.",
+      "Increased Sales Qualified Leads by 30% through multi-channel sequencing.",
+      "Achieved 45% average email open rates via A/B tested drip campaigns.",
+      "Reduced lead response time by 40% and built 5+ recurring referral partnerships.",
+    ],
+    learnings: [
+      "Consistent process beats occasional intensity in outreach.",
+      "Small experiments compound into large conversion gains.",
+    ],
+    technologies: ["LinkedIn Sales Navigator", "Cold email automation", "CRM", "A/B testing"],
   },
   {
     company: "Zinple Info Solutions",
     role: "Business Developer",
     period: "Jul 2023 – Apr 2024",
     current: false,
-    impact: "Handled end-to-end client communication and ERP solution positioning in a fast-paced startup environment.",
-    points: [
-      "Generated leads and supported client acquisition for SAP Business One, RPA, Odoo, and custom ERP solutions",
-      "Managed client communication, follow-ups, and relationship building throughout the sales cycle",
-      "Executed cold email campaigns and social media outreach to improve brand visibility",
-      "Created website and LinkedIn content targeting Indian and UAE markets",
-      "Conducted market research for Nutrinorm Wellness Pvt Ltd, analyzing brands like Ferrero Rocher, Kinder Joy, Nutella, and Nykaa",
-      "Contributed to the development and customization of 4R Recycle ERP software based on client requirements",
-      "Worked closely with the company director on client meetings and strategic initiatives",
-      "Identified 3,000+ high-value leads across India & UAE",
+    summary:
+      "Owning client communication and ERP positioning in a fast-moving startup environment.",
+    impact:
+      "Learned to hold the full client relationship — from first message to a solution that actually fit.",
+    responsibilities: [
+      "Support client acquisition for SAP Business One, RPA, Odoo and custom ERP solutions.",
+      "Manage communication, follow-ups and relationships across the sales cycle.",
+      "Run cold email and social outreach targeting Indian and UAE markets.",
+      "Work directly with the director on client meetings and strategic initiatives.",
     ],
+    achievements: [
+      "Identified 3,000+ high-value leads across India and the UAE.",
+      "Contributed to the customization of 4R Recycle ERP based on client needs.",
+      "Produced website and LinkedIn content for two markets.",
+      "Conducted competitive market research for consumer wellness brands.",
+    ],
+    learnings: [
+      "Understanding the client's problem matters more than pitching the product.",
+      "In a startup, versatility is the real skill.",
+    ],
+    technologies: ["SAP Business One", "Odoo", "RPA", "ERP customization"],
   },
 ];
 
@@ -135,88 +175,151 @@ const Experience = () => {
   const exp = selected !== null ? experiences[selected] : null;
 
   return (
-    <section ref={sectionRef} id="experience" className="relative px-6 py-24 md:py-32">
-      <div className="mx-auto max-w-3xl">
-        <p className="mb-3 text-center text-sm font-medium uppercase tracking-widest text-primary">
-          My Journey
-        </p>
-        <h2 className="mb-16 text-center text-3xl font-bold text-foreground sm:text-4xl">
-          Experience <span className="gradient-text">Timeline</span>
-        </h2>
+    <section ref={sectionRef} id="experience" className="relative overflow-hidden px-6 py-28 md:py-40">
+      {/* Ambient glow */}
+      <div className="pointer-events-none absolute right-0 top-1/3 h-[28rem] w-[28rem] rounded-full bg-accent/5 blur-[120px]" />
 
+      <div className="relative mx-auto max-w-6xl">
+        {/* Heading */}
+        <div className="mb-20 text-center">
+          <p className="mb-4 text-xs font-medium uppercase tracking-[0.3em] text-primary/80">
+            The Path So Far
+          </p>
+          <h2 className="mb-6 text-4xl font-light tracking-tight text-foreground md:text-5xl">
+            The <span className="gradient-text font-semibold">Journey</span>
+          </h2>
+          <p className="mx-auto max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+            Every role added a different perspective. Together they shaped how I think today.
+          </p>
+        </div>
+
+        {/* Timeline — horizontal on desktop, vertical on mobile */}
         <div className="relative">
-          {/* Vertical line */}
-          <div className="absolute left-4 top-0 h-full w-px bg-gradient-to-b from-primary via-accent to-transparent" />
+          {/* Connecting line */}
+          <div className="absolute left-4 top-0 h-full w-px bg-gradient-to-b from-primary via-accent to-transparent md:left-0 md:top-6 md:h-px md:w-full md:bg-gradient-to-r" />
 
-          {experiences.map((exp, i) => (
-            <div key={exp.company} className="timeline-item relative mb-8 pl-14" style={{ opacity: 0 }}>
-              {/* Node */}
-              <div className="absolute left-4 top-5 z-10 -translate-x-1/2">
-                <div className={`timeline-node flex h-8 w-8 items-center justify-center rounded-full border-2 transition-all duration-300 ${selected === i ? "border-primary glow-blue bg-primary/30" : exp.current ? "border-primary bg-primary/20" : "border-accent bg-accent/20"}`}>
-                  <div className={`h-3 w-3 rounded-full ${selected === i || exp.current ? "bg-primary animate-pulse-glow" : "bg-accent"}`} />
+          <div className="grid gap-8 md:grid-cols-3 md:gap-6">
+            {experiences.map((item, i) => (
+              <div
+                key={item.company}
+                className="timeline-item relative pl-14 md:pl-0 md:pt-16"
+                style={{ opacity: 0 }}
+              >
+                {/* Node */}
+                <div className="absolute left-4 top-5 z-10 -translate-x-1/2 md:left-6 md:top-6 md:-translate-y-1/2">
+                  <div
+                    className={`timeline-node flex h-8 w-8 items-center justify-center rounded-full border-2 ${
+                      item.current
+                        ? "border-primary bg-primary/20"
+                        : "border-accent bg-accent/20"
+                    }`}
+                  >
+                    <div
+                      className={`h-3 w-3 rounded-full ${
+                        item.current ? "bg-primary animate-pulse-glow" : "bg-accent"
+                      }`}
+                    />
+                  </div>
+                </div>
+
+                {/* Card */}
+                <div className="glass flex h-full flex-col rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/40 hover:shadow-[0_0_25px_hsla(var(--neon-blue)/0.12)]">
+                  <span className="mb-3 inline-block text-xs font-medium text-primary">
+                    {item.period}
+                  </span>
+                  <h3 className="text-lg font-semibold text-foreground">{item.company}</h3>
+                  <p className="mt-0.5 text-sm text-muted-foreground">{item.role}</p>
+                  <p className="mt-4 line-clamp-2 text-sm leading-relaxed text-muted-foreground/90">
+                    {item.summary}
+                  </p>
+
+                  <button
+                    onClick={() => setSelected(i)}
+                    className="group mt-6 inline-flex items-center gap-2 self-start rounded-full border border-white/10 bg-gradient-to-r from-primary/15 to-accent/10 px-5 py-2.5 text-sm font-medium text-foreground transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-[0_0_25px_hsla(var(--neon-blue)/0.2)]"
+                  >
+                    Explore My Work
+                    <ArrowRight className="h-4 w-4 text-primary transition-transform duration-300 group-hover:translate-x-1" />
+                  </button>
                 </div>
               </div>
-
-              {/* Compact card */}
-              <button
-                onClick={() => setSelected(i)}
-                className="glass group flex w-full items-center justify-between rounded-xl p-5 text-left transition-all duration-300 hover:-translate-y-1 hover:glow-blue"
-              >
-                <div>
-                  <span className="mb-1 inline-block text-xs font-medium text-primary">{exp.period}</span>
-                  <h3 className="text-lg font-bold text-foreground">{exp.company}</h3>
-                  <p className="text-sm text-muted-foreground">{exp.role}</p>
-                </div>
-                <ArrowRight className="h-5 w-5 shrink-0 text-primary transition-transform duration-300 group-hover:translate-x-1" />
-              </button>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
 
-      {/* Detail panel */}
+      {/* Detail modal */}
       {exp && (
-        <div className="fixed inset-0 z-50 flex items-end justify-center md:items-stretch md:justify-end">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
           <div
             ref={overlayRef}
             onClick={closePanel}
-            className="absolute inset-0 bg-background/70 backdrop-blur-sm"
+            className="absolute inset-0 bg-background/60 backdrop-blur-md"
             style={{ opacity: 0 }}
           />
           <div
             ref={panelRef}
-            className="glass relative z-10 max-h-[85vh] w-full overflow-y-auto rounded-t-3xl p-7 md:max-h-full md:w-[28rem] md:rounded-none md:rounded-l-3xl"
+            className="glass relative z-10 max-h-[85vh] w-full max-w-2xl overflow-y-auto rounded-3xl p-8 sm:p-10"
             style={{ opacity: 0 }}
           >
             <button
               onClick={closePanel}
-              aria-label="Close panel"
+              aria-label="Close"
               className="absolute right-5 top-5 flex h-9 w-9 items-center justify-center rounded-full bg-primary/10 text-primary transition-colors hover:bg-primary/20"
             >
               <X className="h-5 w-5" />
             </button>
 
             <span className="mb-1 inline-block text-xs font-medium text-primary">{exp.period}</span>
-            <h3 className="text-2xl font-bold text-foreground">{exp.company}</h3>
-            <p className="mb-6 text-sm text-muted-foreground">{exp.role}</p>
+            <h3 className="text-2xl font-semibold text-foreground">{exp.company}</h3>
+            <p className="text-sm text-muted-foreground">{exp.role}</p>
 
-            <h4 className="mb-2 text-sm font-semibold uppercase tracking-wide text-primary">Impact Statement</h4>
-            <p className="mb-6 text-sm italic leading-relaxed text-foreground/90">"{exp.impact}"</p>
+            <div className="mt-8 space-y-8">
+              <ModalList title="Responsibilities" items={exp.responsibilities} />
+              <ModalList title="Achievements" items={exp.achievements} />
+              <ModalList title="Key Learnings" items={exp.learnings} />
 
-            <h4 className="mb-3 text-sm font-semibold uppercase tracking-wide text-primary">Key Achievements</h4>
-            <ul className="space-y-2.5 text-sm text-muted-foreground">
-              {exp.points.map((point, j) => (
-                <li key={j} className="flex items-start gap-2.5">
-                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
-                  <span className="leading-relaxed">{point}</span>
-                </li>
-              ))}
-            </ul>
+              <div>
+                <h4 className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-primary/80">
+                  Technologies Used
+                </h4>
+                <div className="flex flex-wrap gap-2">
+                  {exp.technologies.map((tech) => (
+                    <span
+                      key={tech}
+                      className="rounded-full border border-white/10 bg-primary/5 px-3 py-1.5 text-xs text-muted-foreground"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <h4 className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-primary/80">
+                  Impact
+                </h4>
+                <p className="text-sm italic leading-relaxed text-foreground/90">"{exp.impact}"</p>
+              </div>
+            </div>
           </div>
         </div>
       )}
     </section>
   );
 };
+
+const ModalList = ({ title, items }: { title: string; items: string[] }) => (
+  <div>
+    <h4 className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-primary/80">{title}</h4>
+    <ul className="space-y-2.5 text-sm text-muted-foreground">
+      {items.map((item, j) => (
+        <li key={j} className="flex items-start gap-2.5">
+          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+          <span className="leading-relaxed">{item}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+);
 
 export default Experience;
