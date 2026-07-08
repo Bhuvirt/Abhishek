@@ -12,6 +12,7 @@ import SelectedInitiatives from "@/components/SelectedInitiatives";
 import Challenges from "@/components/Challenges";
 import Achievements from "@/components/Achievements";
 import CurrentFocus from "@/components/CurrentFocus";
+import WhatIEnjoySolving from "@/components/WhatIEnjoySolving";
 import Skills from "@/components/Skills";
 import WhyTeamsTrust from "@/components/WhyTeamsTrust";
 import WorkApproach from "@/components/WorkApproach";
@@ -37,6 +38,7 @@ const Index = () => {
         <Challenges />
         <Achievements />
         <CurrentFocus />
+        <WhatIEnjoySolving />
         <Skills />
         <WhyTeamsTrust />
         <WorkApproach />
