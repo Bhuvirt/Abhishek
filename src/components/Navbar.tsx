@@ -7,7 +7,7 @@ const links = [
   { label: "Impact", href: "#impact" },
   { label: "Experience", href: "#experience" },
   { label: "Evolution", href: "#evolution" },
-  { label: "Hackathon", href: "#hackathon" },
+  { label: "Initiatives", href: "#initiatives" },
   { label: "Achievements", href: "#achievements" },
   { label: "Focus", href: "#focus" },
   { label: "Skills", href: "#skills" },

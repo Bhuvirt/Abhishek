@@ -2,13 +2,13 @@ import { useState } from "react";
 import Preloader from "@/components/Preloader";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import MetricsStrip from "@/components/MetricsStrip";
+import ImpactSnapshot from "@/components/ImpactSnapshot";
 import AboutMe from "@/components/AboutMe";
 import About from "@/components/About";
 import Philosophy from "@/components/Philosophy";
 import Experience from "@/components/Experience";
 import CareerEvolution from "@/components/CareerEvolution";
-import Hackathon from "@/components/Hackathon";
+import SelectedInitiatives from "@/components/SelectedInitiatives";
 import Challenges from "@/components/Challenges";
 import Achievements from "@/components/Achievements";
 import CurrentFocus from "@/components/CurrentFocus";
@@ -27,13 +27,13 @@ const Index = () => {
       <div style={{ opacity: loaded ? 1 : 0, transition: "opacity 0.6s ease" }}>
         <Navbar />
         <Hero />
-        <MetricsStrip />
+        <ImpactSnapshot />
         <AboutMe />
         <About />
         <Philosophy />
         <Experience />
         <CareerEvolution />
-        <Hackathon />
+        <SelectedInitiatives />
         <Challenges />
         <Achievements />
         <CurrentFocus />
