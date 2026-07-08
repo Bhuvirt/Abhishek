@@ -1,33 +1,56 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Mail, Phone, Linkedin, MapPin, Briefcase, Monitor, Clock } from "lucide-react";
+import { Download, Send, Settings, Kanban, HeartHandshake, BarChart3 } from "lucide-react";
+import resumeAsset from "@/assets/Abhishek_Choudhary_Resume.pdf.asset.json";
 import { toast } from "@/hooks/use-toast";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const WEB3FORMS_KEY = "5e4c4564-fcc5-49e5-9617-93a92d389375";
 
+const exploring = [
+  { icon: Settings, label: "Operations" },
+  { icon: Kanban, label: "Program Management" },
+  { icon: HeartHandshake, label: "Customer Success" },
+  { icon: BarChart3, label: "Business Operations" },
+];
+
 const Contact = () => {
   const sectionRef = useRef<HTMLElement>(null);
+  const cardRef = useRef<HTMLDivElement>(null);
+  const formRef = useRef<HTMLDivElement>(null);
+  const [showForm, setShowForm] = useState(false);
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [sending, setSending] = useState(false);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const els = sectionRef.current?.querySelectorAll(".contact-animate");
-      els?.forEach((el, i) => {
-        gsap.fromTo(el,
-          { opacity: 0, x: -30 },
-          {
-            opacity: 1, x: 0, duration: 0.6, delay: i * 0.1, ease: "power3.out",
-            scrollTrigger: { trigger: sectionRef.current, start: "top 70%" },
-          }
-        );
-      });
+      gsap.fromTo(
+        cardRef.current,
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.9,
+          ease: "power3.out",
+          scrollTrigger: { trigger: sectionRef.current, start: "top 75%" },
+        }
+      );
     }, sectionRef);
     return () => ctx.revert();
   }, []);
+
+  useEffect(() => {
+    if (showForm && formRef.current) {
+      gsap.fromTo(
+        formRef.current,
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }
+      );
+      formRef.current.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
+  }, [showForm]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -48,6 +71,7 @@ const Contact = () => {
       if (data.success) {
         toast({ title: "Message sent!", description: "Thanks for reaching out. I'll get back to you soon." });
         setForm({ name: "", email: "", message: "" });
+        setShowForm(false);
       } else {
         toast({ title: "Failed to send", description: "Something went wrong. Please try again.", variant: "destructive" });
       }
@@ -60,99 +84,108 @@ const Contact = () => {
 
   return (
     <section ref={sectionRef} id="contact" className="relative px-6 py-24 md:py-32">
-      <div className="mx-auto max-w-4xl">
-        <h2 className="mb-16 text-center text-3xl font-bold text-foreground sm:text-4xl">
-          Open to <span className="gradient-text">Opportunities</span>
-        </h2>
+      <div className="mx-auto max-w-3xl">
+        <div className="mb-12 text-center">
+          <span className="mb-4 inline-block text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+            What's Next
+          </span>
+          <h2 className="mb-5 text-3xl font-bold text-foreground sm:text-4xl md:text-5xl">
+            What's <span className="gradient-text">Next?</span>
+          </h2>
+          <p className="mx-auto max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">
+            I'm looking for opportunities where thoughtful execution, structured thinking and meaningful collaboration can create lasting impact.
+          </p>
+        </div>
 
-        <div className="grid gap-12 md:grid-cols-2">
-          {/* Info */}
-          <div className="flex flex-col gap-6">
-            <div className="contact-animate" style={{ opacity: 0 }}>
-              <p className="mb-8 leading-relaxed text-muted-foreground">
-                Interested in discussing Client Engagement, Operations, Program Management, Recruitment Coordination, or Implementation opportunities? I'd be happy to connect.
-              </p>
-            </div>
+        <div
+          ref={cardRef}
+          className="glass mx-auto rounded-2xl p-8 text-center md:p-12"
+          style={{ opacity: 0 }}
+        >
+          <p className="mb-8 text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+            Currently Exploring
+          </p>
 
-            <a href="mailto:choudhary9754abhi@gmail.com" className="contact-animate glass flex items-center gap-4 rounded-xl p-4 text-foreground transition-all duration-300 hover:glow-blue" style={{ opacity: 0 }}>
-              <Mail className="h-5 w-5 text-primary" />
-              <span className="text-sm">choudhary9754abhi@gmail.com</span>
-            </a>
-            <a href="tel:+916265649781" className="contact-animate glass flex items-center gap-4 rounded-xl p-4 text-foreground transition-all duration-300 hover:glow-blue" style={{ opacity: 0 }}>
-              <Phone className="h-5 w-5 text-primary" />
-              <span className="text-sm">+91 62656 49781</span>
-            </a>
-            <a href="https://www.linkedin.com/in/abhishek-choudhary-b8862220b/" target="_blank" rel="noopener noreferrer" className="contact-animate glass flex items-center gap-4 rounded-xl p-4 text-foreground transition-all duration-300 hover:glow-blue" style={{ opacity: 0 }}>
-              <Linkedin className="h-5 w-5 text-primary" />
-              <span className="text-sm">LinkedIn Profile</span>
-            </a>
+          <div className="grid gap-4 sm:grid-cols-2">
+            {exploring.map((item, index) => {
+              const Icon = item.icon;
+              return (
+                <div
+                  key={index}
+                  className="group flex items-center justify-center gap-3 rounded-xl border border-border/50 bg-muted/20 px-4 py-3 transition-all duration-300 hover:border-primary/30 hover:bg-primary/5"
+                >
+                  <Icon className="h-4 w-4 text-muted-foreground transition-colors group-hover:text-primary" strokeWidth={1.5} />
+                  <span className="text-sm font-medium text-foreground">{item.label}</span>
+                </div>
+              );
+            })}
           </div>
 
-          {/* Form + Info Card */}
-          <div className="flex flex-col gap-6">
-            <div className="contact-animate glass grid grid-cols-1 gap-4 rounded-2xl p-6 transition-all duration-300 hover:glow-blue sm:grid-cols-2" style={{ opacity: 0 }}>
-              {[
-                { icon: MapPin, label: "Location", value: "India" },
-                { icon: Briefcase, label: "Availability", value: "Open to Full-Time Opportunities" },
-                { icon: Monitor, label: "Work Preference", value: "On-site, Hybrid, or Remote" },
-                { icon: Clock, label: "Response Time", value: "Typically within 24 hours" },
-              ].map((item, index) => {
-                const Icon = item.icon;
-                return (
-                  <div
-                    key={index}
-                    className="group flex items-start gap-3 rounded-xl p-3 transition-all duration-300 hover:bg-primary/5"
-                  >
-                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-primary/20 bg-primary/10 text-primary transition-all duration-300 group-hover:scale-110 group-hover:border-primary/40">
-                      <Icon className="h-4 w-4" strokeWidth={1.5} />
-                    </div>
-                    <div>
-                      <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                        {item.label}
-                      </p>
-                      <p className="text-sm font-medium text-foreground">{item.value}</p>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
+          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <a
+              href={resumeAsset.url}
+              download="Abhishek_Choudhary_Resume.pdf"
+              className="group inline-flex items-center gap-2 glass rounded-full border border-white/10 px-8 py-3.5 text-sm font-medium text-foreground transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-[0_0_30px_hsla(var(--neon-blue)/0.2),0_0_60px_hsla(var(--neon-violet)/0.12)]"
+            >
+              <Download className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5" />
+              Download Resume
+            </a>
 
+            <button
+              onClick={() => setShowForm(true)}
+              className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-primary to-accent px-8 py-3.5 text-sm font-medium text-primary-foreground transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_40px_hsla(var(--neon-blue)/0.3),0_0_80px_hsla(var(--neon-violet)/0.15)]"
+            >
+              Let's Connect
+              <Send className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
+            </button>
+          </div>
+        </div>
+
+        {showForm && (
+          <div
+            ref={formRef}
+            className="mt-8 rounded-2xl border border-border/50 bg-muted/20 p-6 backdrop-blur-md sm:p-8"
+          >
+            <p className="mb-6 text-center text-sm text-muted-foreground">
+              Send a quick message and I'll get back to you soon.
+            </p>
             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-              {[
-                { name: "name" as const, placeholder: "Your Name", type: "text" },
-                { name: "email" as const, placeholder: "Your Email", type: "email" },
-              ].map((field) => (
+              <div className="grid gap-4 sm:grid-cols-2">
                 <input
-                  key={field.name}
-                  type={field.type}
-                  placeholder={field.placeholder}
+                  type="text"
+                  placeholder="Your Name"
                   required
-                  value={form[field.name]}
-                  onChange={(e) => setForm((f) => ({ ...f, [field.name]: e.target.value }))}
-                  className="contact-animate glass rounded-xl border-transparent bg-muted/30 px-5 py-4 text-sm text-foreground outline-none transition-all duration-300 placeholder:text-muted-foreground focus:border-primary/50 focus:shadow-[0_0_20px_hsla(var(--neon-blue)/0.2)]"
-                  style={{ opacity: 0 }}
+                  value={form.name}
+                  onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
+                  className="glass rounded-xl border-transparent bg-muted/30 px-5 py-4 text-sm text-foreground outline-none transition-all duration-300 placeholder:text-muted-foreground focus:border-primary/50 focus:shadow-[0_0_20px_hsla(var(--neon-blue)/0.2)]"
                 />
-              ))}
+                <input
+                  type="email"
+                  placeholder="Your Email"
+                  required
+                  value={form.email}
+                  onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
+                  className="glass rounded-xl border-transparent bg-muted/30 px-5 py-4 text-sm text-foreground outline-none transition-all duration-300 placeholder:text-muted-foreground focus:border-primary/50 focus:shadow-[0_0_20px_hsla(var(--neon-blue)/0.2)]"
+                />
+              </div>
               <textarea
                 placeholder="Your Message"
                 required
                 rows={5}
                 value={form.message}
                 onChange={(e) => setForm((f) => ({ ...f, message: e.target.value }))}
-                className="contact-animate glass resize-none rounded-xl border-transparent bg-muted/30 px-5 py-4 text-sm text-foreground outline-none transition-all duration-300 placeholder:text-muted-foreground focus:border-primary/50 focus:shadow-[0_0_20px_hsla(var(--neon-blue)/0.2)]"
-                style={{ opacity: 0 }}
+                className="glass resize-none rounded-xl border-transparent bg-muted/30 px-5 py-4 text-sm text-foreground outline-none transition-all duration-300 placeholder:text-muted-foreground focus:border-primary/50 focus:shadow-[0_0_20px_hsla(var(--neon-blue)/0.2)]"
               />
               <button
                 type="submit"
                 disabled={sending}
-                className="contact-animate mt-2 rounded-xl bg-gradient-to-r from-primary to-accent px-8 py-4 text-sm font-medium text-primary-foreground transition-all duration-300 hover:shadow-[0_0_30px_hsla(var(--neon-blue)/0.4)] disabled:opacity-50 disabled:cursor-not-allowed"
-                style={{ opacity: 0 }}
+                className="mt-2 rounded-xl bg-gradient-to-r from-primary to-accent px-8 py-4 text-sm font-medium text-primary-foreground transition-all duration-300 hover:shadow-[0_0_30px_hsla(var(--neon-blue)/0.4)] disabled:cursor-not-allowed disabled:opacity-50"
               >
                 {sending ? "Sending..." : "Send Message"}
               </button>
             </form>
           </div>
-        </div>
+        )}
       </div>
     </section>
   );
