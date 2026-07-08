@@ -3,72 +3,63 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
   Users,
-  ClipboardList,
-  MessageSquareHeart,
   Workflow,
+  MessageSquareHeart,
+  Search,
+  Kanban,
+  Database,
+  HelpCircle,
+  FileSpreadsheet,
+  StickyNote,
+  Cloud,
+  Target,
+  Bot,
+  Zap,
+  Layers,
   BarChart3,
-  TrendingUp,
+  FileText,
 } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const capabilities = [
+const categories = [
   {
-    icon: Users,
-    title: "Stakeholder Management",
-    description:
-      "Coordinating institutional partners, corporate teams, and internal stakeholders to achieve shared objectives.",
+    title: "Core Strengths",
+    items: [
+      { icon: Users, label: "Stakeholder Management" },
+      { icon: Workflow, label: "Operations Coordination" },
+      { icon: MessageSquareHeart, label: "Client Engagement" },
+      { icon: Search, label: "Business Research" },
+      { icon: Kanban, label: "Program Management" },
+    ],
   },
   {
-    icon: ClipboardList,
-    title: "Recruitment Operations",
-    description:
-      "Managing end-to-end hiring workflows including registrations, assessments, interviews, and reporting.",
+    title: "Tools",
+    items: [
+      { icon: Database, label: "Salesforce" },
+      { icon: HelpCircle, label: "HubSpot" },
+      { icon: FileSpreadsheet, label: "Excel" },
+      { icon: StickyNote, label: "Notion" },
+      { icon: Cloud, label: "Google Workspace" },
+      { icon: Target, label: "Lead Generation Platforms" },
+    ],
   },
   {
-    icon: MessageSquareHeart,
-    title: "Client Engagement",
-    description:
-      "Building trust-based relationships while ensuring consistent communication and execution.",
+    title: "Working Knowledge",
+    items: [
+      { icon: Bot, label: "AI Workflows" },
+      { icon: Zap, label: "Automation" },
+      { icon: Layers, label: "ERP Systems" },
+      { icon: BarChart3, label: "Data Analysis" },
+      { icon: FileText, label: "Process Documentation" },
+    ],
   },
-  {
-    icon: Workflow,
-    title: "Process Optimization",
-    description:
-      "Identifying inefficiencies and creating structured workflows that improve operational effectiveness.",
-  },
-  {
-    icon: BarChart3,
-    title: "Data Analysis & Reporting",
-    description:
-      "Using Excel, data mapping, and reporting tools to support business decisions and operational tracking.",
-  },
-  {
-    icon: TrendingUp,
-    title: "Business Development & Outreach",
-    description:
-      "Generating opportunities through research, prospecting, market intelligence, and relationship building.",
-  },
-];
-
-const tools = [
-  "Excel (Advanced)",
-  "LinkedIn Sales Navigator",
-  "Snov.io",
-  "Apollo",
-  "Lusha",
-  "HubSpot",
-  "Salesforce",
-  "Clay",
-  "SignalHire",
-  "ZoomInfo",
 ];
 
 const Skills = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
-  const gridRef = useRef<HTMLDivElement>(null);
-  const stripRef = useRef<HTMLDivElement>(null);
+  const columnsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -84,35 +75,18 @@ const Skills = () => {
         }
       );
 
-      const cards = gridRef.current?.querySelectorAll(".capability-card");
-      if (cards) {
+      const columns = columnsRef.current?.querySelectorAll(".skills-column");
+      if (columns) {
         gsap.fromTo(
-          cards,
-          { opacity: 0, y: 45, scale: 0.97 },
+          columns,
+          { opacity: 0, y: 50 },
           {
             opacity: 1,
             y: 0,
-            scale: 1,
             duration: 0.7,
-            stagger: 0.1,
+            stagger: 0.12,
             ease: "power3.out",
-            scrollTrigger: { trigger: gridRef.current, start: "top 85%" },
-          }
-        );
-      }
-
-      const chips = stripRef.current?.querySelectorAll(".tool-chip");
-      if (chips) {
-        gsap.fromTo(
-          chips,
-          { opacity: 0, y: 20 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.5,
-            stagger: 0.05,
-            ease: "power3.out",
-            scrollTrigger: { trigger: stripRef.current, start: "top 90%" },
+            scrollTrigger: { trigger: columnsRef.current, start: "top 85%" },
           }
         );
       }
@@ -124,68 +98,50 @@ const Skills = () => {
   return (
     <section ref={sectionRef} id="skills" className="relative px-6 py-24 md:py-32">
       <div className="mx-auto max-w-6xl">
-        <div ref={headerRef} className="mb-14 text-center" style={{ opacity: 0 }}>
+        <div ref={headerRef} className="mb-16 text-center" style={{ opacity: 0 }}>
           <span className="mb-4 inline-block text-xs font-semibold uppercase tracking-[0.2em] text-primary">
-            What I Bring
+            Capabilities
           </span>
           <h2 className="mb-5 text-3xl font-bold text-foreground sm:text-4xl md:text-5xl">
-            Core <span className="gradient-text">Capabilities</span>
+            Skills & <span className="gradient-text">Tools</span>
           </h2>
-          <p className="mx-auto max-w-3xl text-sm leading-relaxed text-muted-foreground sm:text-base">
-            The operational, communication, and analytical strengths developed through
-            experience across recruitment, client engagement, and business development.
+          <p className="mx-auto max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
+            The capabilities, platforms, and working knowledge that support my
+            day-to-day work.
           </p>
         </div>
 
         <div
-          ref={gridRef}
-          className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6"
+          ref={columnsRef}
+          className="grid gap-6 md:grid-cols-3"
         >
-          {capabilities.map((item, index) => {
-            const Icon = item.icon;
-            return (
-              <div
-                key={index}
-                className="capability-card glass group relative overflow-hidden rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1 hover:glow-violet sm:p-7"
-                style={{ opacity: 0 }}
-              >
-                <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-accent/40 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-
-                <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl border border-accent/20 bg-accent/10 text-accent transition-all duration-300 group-hover:scale-110 group-hover:border-accent/40 group-hover:bg-accent/15">
-                  <Icon className="h-5 w-5" strokeWidth={1.5} />
-                </div>
-
-                <h3 className="mb-2 text-lg font-semibold text-foreground">
-                  {item.title}
-                </h3>
-                <p className="text-sm leading-relaxed text-muted-foreground/80">
-                  {item.description}
-                </p>
-              </div>
-            );
-          })}
-        </div>
-
-        {/* Tool Stack Strip */}
-        <div
-          ref={stripRef}
-          className="mt-14 rounded-2xl border border-border/50 bg-muted/20 p-6 backdrop-blur-md sm:p-8"
-          style={{ opacity: 0 }}
-        >
-          <p className="mb-5 text-center text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-            Tools & Platforms
-          </p>
-          <div className="flex flex-wrap items-center justify-center gap-3">
-            {tools.map((tool, index) => (
-              <span
-                key={index}
-                className="tool-chip glass rounded-full px-4 py-2 text-sm font-medium text-foreground transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/40 hover:bg-primary/10 hover:text-primary"
-                style={{ opacity: 0 }}
-              >
-                {tool}
-              </span>
-            ))}
-          </div>
+          {categories.map((category, index) => (
+            <div
+              key={index}
+              className="skills-column glass rounded-2xl p-8"
+              style={{ opacity: 0 }}
+            >
+              <h3 className="mb-8 text-sm font-semibold uppercase tracking-[0.2em] text-primary">
+                {category.title}
+              </h3>
+              <ul className="space-y-6">
+                {category.items.map((item, idx) => {
+                  const Icon = item.icon;
+                  return (
+                    <li
+                      key={idx}
+                      className="group flex items-center gap-4 text-sm text-foreground/90 transition-colors hover:text-primary"
+                    >
+                      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-border/50 bg-muted/30 text-muted-foreground transition-all duration-300 group-hover:border-primary/30 group-hover:text-primary">
+                        <Icon className="h-4 w-4" strokeWidth={1.5} />
+                      </span>
+                      <span className="font-medium">{item.label}</span>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          ))}
         </div>
       </div>
     </section>
