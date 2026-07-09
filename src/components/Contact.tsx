@@ -32,7 +32,7 @@ const Contact = () => {
         {
           opacity: 1,
           y: 0,
-          duration: 0.9,
+          duration: 0.7,
           ease: "power3.out",
           scrollTrigger: { trigger: sectionRef.current, start: "top 75%" },
         }

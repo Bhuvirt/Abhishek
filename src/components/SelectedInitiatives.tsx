@@ -62,7 +62,7 @@ const SelectedInitiatives = () => {
           {
             opacity: 1,
             y: 0,
-            duration: 0.8,
+            duration: 0.65,
             stagger: 0.14,
             ease: "power3.out",
             scrollTrigger: { trigger: cardsRef.current, start: "top 85%" },
