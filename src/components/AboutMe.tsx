@@ -39,7 +39,7 @@ const AboutMe = () => {
           opacity: 1,
           x: 0,
           scale: 1,
-          duration: 1,
+          duration: 0.8,
           ease: "power3.out",
           scrollTrigger: { trigger: sectionRef.current, start: "top 75%" },
         }
@@ -52,7 +52,7 @@ const AboutMe = () => {
           {
             opacity: 1,
             y: 0,
-            duration: 0.8,
+            duration: 0.65,
             stagger: 0.12,
             ease: "power3.out",
             scrollTrigger: { trigger: contentRef.current, start: "top 78%" },

@@ -77,7 +77,7 @@ const ImpactSnapshot = () => {
     <section
       id="impact"
       ref={sectionRef}
-      className="relative w-full py-24 overflow-hidden"
+      className="relative w-full py-28 md:py-36 overflow-hidden"
     >
       {/* Faint grid pattern */}
       <div

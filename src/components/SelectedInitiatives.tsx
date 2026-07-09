@@ -62,7 +62,7 @@ const SelectedInitiatives = () => {
           {
             opacity: 1,
             y: 0,
-            duration: 0.8,
+            duration: 0.65,
             stagger: 0.14,
             ease: "power3.out",
             scrollTrigger: { trigger: cardsRef.current, start: "top 85%" },
@@ -78,7 +78,7 @@ const SelectedInitiatives = () => {
     <section
       ref={sectionRef}
       id="initiatives"
-      className="relative px-6 py-24 md:py-32"
+      className="relative px-6 py-28 md:py-40"
     >
       <div className="mx-auto max-w-6xl">
         <div ref={headerRef} className="mb-16 text-center" style={{ opacity: 0 }}>

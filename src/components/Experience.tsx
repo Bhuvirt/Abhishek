@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowRight, X } from "lucide-react";
+import { getLenis } from "@/hooks/useSmoothScroll";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -115,7 +116,7 @@ const Experience = () => {
         gsap.fromTo(item,
           { opacity: 0, y: 40 },
           {
-            opacity: 1, y: 0, duration: 0.7, ease: "power3.out",
+            opacity: 1, y: 0, duration: 0.6, ease: "power3.out",
             scrollTrigger: { trigger: item, start: "top 85%" },
           }
         );
@@ -153,7 +154,11 @@ const Experience = () => {
       );
     }
     document.body.style.overflow = "hidden";
-    return () => { document.body.style.overflow = ""; };
+    getLenis()?.stop();
+    return () => {
+      document.body.style.overflow = "";
+      getLenis()?.start();
+    };
   }, [selected]);
 
   const closePanel = () => {

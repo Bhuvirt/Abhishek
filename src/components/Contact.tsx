@@ -32,7 +32,7 @@ const Contact = () => {
         {
           opacity: 1,
           y: 0,
-          duration: 0.9,
+          duration: 0.7,
           ease: "power3.out",
           scrollTrigger: { trigger: sectionRef.current, start: "top 75%" },
         }
@@ -83,7 +83,7 @@ const Contact = () => {
   };
 
   return (
-    <section ref={sectionRef} id="contact" className="relative px-6 py-24 md:py-32">
+    <section ref={sectionRef} id="contact" className="relative px-6 py-28 md:py-40">
       <div className="mx-auto max-w-3xl">
         <div className="mb-12 text-center">
           <span className="mb-4 inline-block text-xs font-semibold uppercase tracking-[0.2em] text-primary">
