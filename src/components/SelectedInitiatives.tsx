@@ -78,7 +78,7 @@ const SelectedInitiatives = () => {
     <section
       ref={sectionRef}
       id="initiatives"
-      className="relative px-6 py-24 md:py-32"
+      className="relative px-6 py-28 md:py-40"
     >
       <div className="mx-auto max-w-6xl">
         <div ref={headerRef} className="mb-16 text-center" style={{ opacity: 0 }}>
