@@ -4,23 +4,17 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import ImpactSnapshot from "@/components/ImpactSnapshot";
 import AboutMe from "@/components/AboutMe";
-import About from "@/components/About";
-import Philosophy from "@/components/Philosophy";
 import Experience from "@/components/Experience";
-import CareerEvolution from "@/components/CareerEvolution";
 import SelectedInitiatives from "@/components/SelectedInitiatives";
-import Challenges from "@/components/Challenges";
-import Achievements from "@/components/Achievements";
-import CurrentFocus from "@/components/CurrentFocus";
-import WhatIEnjoySolving from "@/components/WhatIEnjoySolving";
 import Skills from "@/components/Skills";
-import WhyTeamsTrust from "@/components/WhyTeamsTrust";
-import WorkApproach from "@/components/WorkApproach";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import SectionReveal from "@/components/SectionReveal";
+import { useSmoothScroll } from "@/hooks/useSmoothScroll";
 
 const Index = () => {
   const [loaded, setLoaded] = useState(false);
+  useSmoothScroll();
 
   return (
     <>
@@ -28,21 +22,12 @@ const Index = () => {
       <div style={{ opacity: loaded ? 1 : 0, transition: "opacity 0.6s ease" }}>
         <Navbar />
         <Hero />
-        <ImpactSnapshot />
-        <AboutMe />
-        <About />
-        <Philosophy />
-        <Experience />
-        <CareerEvolution />
-        <SelectedInitiatives />
-        <Challenges />
-        <Achievements />
-        <CurrentFocus />
-        <WhatIEnjoySolving />
-        <Skills />
-        <WhyTeamsTrust />
-        <WorkApproach />
-        <Contact />
+        <SectionReveal><ImpactSnapshot /></SectionReveal>
+        <SectionReveal><AboutMe /></SectionReveal>
+        <SectionReveal><Experience /></SectionReveal>
+        <SectionReveal><SelectedInitiatives /></SectionReveal>
+        <SectionReveal><Skills /></SectionReveal>
+        <SectionReveal><Contact /></SectionReveal>
         <Footer />
       </div>
     </>
