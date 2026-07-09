@@ -96,7 +96,7 @@ const Skills = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} id="skills" className="relative px-6 py-24 md:py-32">
+    <section ref={sectionRef} id="skills" className="relative px-6 py-28 md:py-40">
       <div className="mx-auto max-w-6xl">
         <div ref={headerRef} className="mb-16 text-center" style={{ opacity: 0 }}>
           <span className="mb-4 inline-block text-xs font-semibold uppercase tracking-[0.2em] text-primary">
