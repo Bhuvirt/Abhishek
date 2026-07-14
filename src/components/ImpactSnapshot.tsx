@@ -5,12 +5,12 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const metrics = [
-  { value: 120, suffix: "+", label: "Hiring Drives" },
-  { value: 15000, suffix: "+", label: "Candidates" },
-  { value: 1200, suffix: "+", label: "Institutions" },
-  { value: 700, suffix: "+", label: "Placement Officers" },
-  { valueLabel: "Fortune 500", suffix: "", label: "Hiring Programs" },
-  { value: 4500, suffix: "+", label: "Global Leads Generated" },
+  { value: 100, suffix: "+", label: "Campus Hiring Drives" },
+  { value: 10000, suffix: "+", label: "Candidates Processed" },
+  { value: 6000, suffix: "+", label: "B2B Leads Sourced" },
+  { value: 45, suffix: "%", label: "Avg. Email Open Rate" },
+  { value: 40, suffix: "%", label: "Faster Lead Response" },
+  { valueLabel: "₹2L+", suffix: "", label: "Raised in Relief Aid" },
 ];
 
 const formatNumber = (n: number) => n.toLocaleString();
@@ -101,7 +101,7 @@ const ImpactSnapshot = () => {
             Impact Snapshot
           </p>
           <h2 className="mx-auto max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl">
-            <span className="gradient-text">Measured</span> through execution, scale and collaboration.
+            A career <span className="gradient-text">measured</span> across recruitment, growth and community.
           </h2>
         </div>
 

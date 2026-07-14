@@ -120,22 +120,24 @@ const AboutMe = () => {
           <div className="space-y-5 text-base leading-relaxed text-muted-foreground sm:text-lg">
             <p>I'm Abhishek.</p>
             <p>
-              Over the last few years I've worked across business development, client
-              engagement and large-scale hiring operations.
+              My work has moved through very different worlds — enterprise software and ERP,
+              cloud infrastructure and hosting, and now HR technology and large-scale campus
+              hiring.
             </p>
             <p>
-              While every role has been different, one thing has remained constant—my
-              curiosity for understanding how complex work becomes simple.
+              Each field taught me something new, but the thread never changed: I'm drawn to
+              the space where people, processes, technology and business meet — and to
+              understanding how complicated work quietly becomes simple.
             </p>
             <p>
-              Whether coordinating nationwide hiring programs, improving operational
-              workflows or contributing to product innovation, I've always enjoyed finding
-              better ways for people, processes and technology to work together.
+              I started closer to research and recruitment, learned to build demand and
+              relationships in SaaS and cloud businesses, and grew into coordinating national
+              programs where dozens of institutions, teams and candidates have to move in sync.
             </p>
             <p>
-              Today, I'm building a career around operations, client engagement and
-              execution, where thoughtful communication and structured systems create
-              meaningful outcomes.
+              What I enjoy most is bringing structure to complexity — turning scattered effort
+              into systems that hold up under pressure, and making execution feel calm rather
+              than chaotic.
             </p>
           </div>
 
