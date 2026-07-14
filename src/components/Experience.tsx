@@ -236,6 +236,9 @@ const Experience = () => {
                   <span className="mb-3 inline-block text-xs font-medium text-primary">
                     {item.period}
                   </span>
+                  <span className="mb-3 inline-block self-start rounded-full border border-white/10 bg-white/[0.03] px-2.5 py-1 text-[0.62rem] font-medium uppercase tracking-wider text-muted-foreground">
+                    {item.domain}
+                  </span>
                   <h3 className="text-lg font-semibold text-foreground">{item.company}</h3>
                   <p className="mt-0.5 text-sm text-muted-foreground">{item.role}</p>
                   <p className="mt-4 line-clamp-2 text-sm leading-relaxed text-muted-foreground/90">
