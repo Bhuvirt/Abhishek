@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Download, ArrowDown } from "lucide-react";
@@ -6,41 +6,12 @@ import resumeAsset from "@/assets/Abhishek_Choudhary_Resume.pdf.asset.json";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const heroMetrics = [
-  { value: 120, suffix: "+", label: "Hiring Programs" },
-  { value: 15000, suffix: "+", label: "Candidates" },
-  { value: 1200, suffix: "+", label: "Institutions" },
-  { value: 700, suffix: "+", label: "Stakeholders" },
-];
-
-const floatDelays = ["0s", "0.8s", "1.6s", "2.4s"];
-
-const CountUp = ({ target, suffix }: { target: number; suffix: string }) => {
-  const [val, setVal] = useState(0);
-  const ref = useRef<HTMLSpanElement>(null);
-
-  useEffect(() => {
-    const obj = { v: 0 };
-    const tween = gsap.to(obj, {
-      v: target,
-      duration: 2,
-      ease: "power2.out",
-      scrollTrigger: { trigger: ref.current, start: "top 90%" },
-      onUpdate: () => setVal(Math.round(obj.v)),
-    });
-    return () => { tween.kill(); };
-  }, [target]);
-
-  return <span ref={ref}>{val.toLocaleString()}{suffix}</span>;
-};
-
 const Hero = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const eyebrowRef = useRef<HTMLDivElement>(null);
   const headlineRef = useRef<HTMLHeadingElement>(null);
   const descRef = useRef<HTMLParagraphElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
-  const metricsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const tl = gsap.timeline({ delay: 0.3 });
@@ -62,28 +33,6 @@ const Hero = () => {
     );
 
     return () => { tl.kill(); };
-  }, []);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      const cards = metricsRef.current?.querySelectorAll(".metric-card");
-      if (cards) {
-        gsap.fromTo(
-          cards,
-          { opacity: 0, y: 40 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-            stagger: 0.1,
-            ease: "power3.out",
-            scrollTrigger: { trigger: metricsRef.current, start: "top 90%" },
-          }
-        );
-      }
-    }, sectionRef);
-
-    return () => ctx.revert();
   }, []);
 
   const scrollTo = (id: string) => {
@@ -117,7 +66,7 @@ const Hero = () => {
           style={{ opacity: 0 }}
         >
           <span className="hidden h-px w-8 bg-gradient-to-r from-transparent via-primary/60 to-transparent sm:block" />
-          Operations <span className="text-primary">•</span> Strategy <span className="text-primary">•</span> Execution
+          People <span className="text-primary">•</span> Processes <span className="text-primary">•</span> Technology <span className="text-primary">•</span> Business
           <span className="hidden h-px w-8 bg-gradient-to-r from-transparent via-primary/60 to-transparent sm:block" />
         </div>
 
@@ -140,7 +89,7 @@ const Hero = () => {
           className="mx-auto mb-12 max-w-2xl text-sm leading-relaxed text-muted-foreground/90 sm:text-base md:text-lg"
           style={{ opacity: 0 }}
         >
-          I help organizations transform complex operations into structured, scalable execution—connecting stakeholders, technology, and workflows to deliver measurable outcomes.
+          I've spent the last few years working across HR technology, enterprise SaaS, cloud infrastructure and business development — helping organizations turn complex, moving parts into structured, reliable execution.
         </p>
 
         {/* CTAs */}
@@ -162,26 +111,6 @@ const Hero = () => {
             <Download className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5" />
             Download Resume
           </a>
-        </div>
-
-        {/* Impact Metrics */}
-        <div ref={metricsRef} className="mt-20" style={{ opacity: 1 }}>
-          <div className="mx-auto grid max-w-4xl grid-cols-2 gap-4 sm:grid-cols-4">
-            {heroMetrics.map((m, i) => (
-              <div
-                key={i}
-                className="metric-card glass rounded-2xl px-4 py-6 transition-all duration-300 hover:border-primary/40 hover:shadow-[0_0_25px_hsla(var(--neon-blue)/0.12)] animate-float-subtle"
-                style={{ animationDelay: floatDelays[i] }}
-              >
-                <p className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl md:text-4xl">
-                  <CountUp target={m.value} suffix={m.suffix} />
-                </p>
-                <p className="mt-2 text-[0.65rem] font-medium uppercase tracking-wider text-muted-foreground/80 sm:text-xs">
-                  {m.label}
-                </p>
-              </div>
-            ))}
-          </div>
         </div>
       </div>
 
