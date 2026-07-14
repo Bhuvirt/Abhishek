@@ -9,6 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 type Experience = {
   company: string;
   role: string;
+  domain: string;
   period: string;
   current: boolean;
   summary: string;
@@ -23,6 +24,7 @@ const experiences: Experience[] = [
   {
     company: "POD.ai",
     role: "Senior Executive, Client Engagement",
+    domain: "HR Technology · Campus Hiring",
     period: "Feb 2025 – Present",
     current: true,
     summary:
@@ -50,37 +52,39 @@ const experiences: Experience[] = [
   {
     company: "ServerGuy / Breeze.io",
     role: "Executive – Lead Generation",
+    domain: "Cloud Infrastructure · SaaS Growth",
     period: "Apr 2024 – Feb 2025",
     current: false,
     summary:
-      "Building global lead-generation systems across markets, tuning outreach for signal over noise.",
+      "Driving demand for cloud hosting and managed infrastructure across global markets — from GPU and WordPress hosting to the Breeze.io Magento product.",
     impact:
       "Replaced scattered outreach with measurable pipelines, lifting qualified leads and cutting response time.",
     responsibilities: [
-      "Research and qualify high-value leads across the USA, Europe, UAE and India.",
+      "Lead prospecting for GPU, WooCommerce, WordPress and cloud hosting across the USA, Europe, UAE and India.",
       "Design multi-channel outreach across LinkedIn Sales Navigator and cold email automation.",
-      "Run product pitches, partnership discussions and proposal creation.",
+      "Run product pitches, partnership discussions and proposal creation for the Breeze.io Magento product.",
       "Handle live webchat queries and streamline the lead-nurturing workflow.",
     ],
     achievements: [
-      "Identified 3,000+ high-value leads across four regions.",
+      "Identified 3,000+ high-value leads across four regions — plus 1,500+ qualified US leads in a single week for cloud hosting.",
       "Increased Sales Qualified Leads by 30% through multi-channel sequencing.",
       "Achieved 45% average email open rates via A/B tested drip campaigns.",
-      "Reduced lead response time by 40% and built 5+ recurring referral partnerships.",
+      "Reduced lead response time by 40% and built 5+ recurring referral partnerships with Magento agencies.",
     ],
     learnings: [
       "Consistent process beats occasional intensity in outreach.",
       "Small experiments compound into large conversion gains.",
     ],
-    technologies: ["LinkedIn Sales Navigator", "Cold email automation", "CRM", "A/B testing"],
+    technologies: ["Cloud & GPU hosting", "Breeze.io / Magento", "LinkedIn Sales Navigator", "Cold email automation"],
   },
   {
     company: "Zinple Info Solutions",
     role: "Business Developer",
+    domain: "Enterprise SaaS · ERP",
     period: "Jul 2023 – Apr 2024",
     current: false,
     summary:
-      "Owning client communication and ERP positioning in a fast-moving startup environment.",
+      "Positioning enterprise software — SAP Business One, Odoo, RPA and custom ERP — and owning client relationships end to end.",
     impact:
       "Learned to hold the full client relationship — from first message to a solution that actually fit.",
     responsibilities: [
