@@ -284,6 +284,7 @@ const Experience = () => {
             <span className="mb-1 inline-block text-xs font-medium text-primary">{exp.period}</span>
             <h3 className="text-2xl font-semibold text-foreground">{exp.company}</h3>
             <p className="text-sm text-muted-foreground">{exp.role}</p>
+            <p className="mt-1 text-xs uppercase tracking-wider text-muted-foreground/70">{exp.domain}</p>
 
             <div className="mt-8 space-y-8">
               <ModalList title="Responsibilities" items={exp.responsibilities} />
