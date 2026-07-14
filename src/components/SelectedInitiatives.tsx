@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Sparkles, Bot, BookOpen, Monitor } from "lucide-react";
+import { Sparkles, Bot, Globe2, HeartHandshake } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -9,29 +9,29 @@ const initiatives = [
   {
     icon: Bot,
     title: "AI Hiring Assistant",
-    context: "48-hour Product Innovation Sprint",
+    context: "HR Tech · 48-hour Innovation Sprint",
     description:
-      "Led a cross-functional team in designing an AI-powered hiring assistant focused on improving recruitment efficiency.",
+      "Formed and led a five-person team to design an AI-driven candidate engagement platform — a post-assessment portal giving rejected applicants feedback and course recommendations.",
     role: "Team Lead & Product Strategist",
-    outcome: "A working prototype and pitch delivered within 48 hours.",
+    outcome: "A working prototype and business pitch delivered in 48 hours, using plain-English \u201Cvibe coding\u201D as a non-technical lead.",
   },
   {
-    icon: BookOpen,
-    title: "Pod Encyclopedia",
-    context: "Internal Knowledge Repository",
+    icon: Globe2,
+    title: "Cross-Market Demand Engine",
+    context: "Cloud & SaaS · Global Growth",
     description:
-      "Built an internal knowledge repository that simplified onboarding and reduced dependency on individual team members.",
-    role: "Creator & Maintainer",
-    outcome: "Faster onboarding and fewer repeated questions across the team.",
+      "Designed multi-channel outreach across the USA, Europe, UAE and India for cloud hosting and Magento products, pairing Sales Navigator with automated, A/B-tested campaigns.",
+    role: "Lead Generation, ServerGuy / Breeze.io",
+    outcome: "Lifted sales-qualified leads by 30% and built 5+ recurring referral partnerships.",
   },
   {
-    icon: Monitor,
-    title: "Academic ERP Enablement",
-    context: "Platform Adoption & Documentation",
+    icon: HeartHandshake,
+    title: "Purpose of Life",
+    context: "Community · Non-Profit Initiative",
     description:
-      "Quickly mastered a newly implemented ERP platform and contributed to documentation, implementation and user adoption.",
-    role: "Implementation Contributor",
-    outcome: "Smoother rollout and clearer guidance for everyday users.",
+      "Co-founded a COVID-19 relief effort for migrant families in Gwalior, coordinating food, clothing and medical aid across the city with a small volunteer team.",
+    role: "Co-Founder",
+    outcome: "250+ relief drives and 600+ volunteer hours, run by a team of six.",
   },
 ];
 
