@@ -13,97 +13,80 @@ type Experience = {
   period: string;
   current: boolean;
   summary: string;
+  overview: string;
+  contributions: string[];
   impact: string;
-  responsibilities: string[];
-  achievements: string[];
-  learnings: string[];
-  technologies: string[];
+  learning: string;
 };
 
 const experiences: Experience[] = [
   {
-    company: "POD.ai",
-    role: "Senior Executive, Client Engagement",
-    domain: "HR Technology · Campus Hiring",
-    period: "Feb 2025 – Present",
-    current: true,
-    summary:
-      "Coordinating nationwide campus hiring programs, keeping institutions and corporate teams moving in sync.",
-    impact:
-      "Turned fragmented, high-pressure hiring seasons into structured, repeatable programs that leadership could rely on.",
-    responsibilities: [
-      "Coordinate 3–4 concurrent national hiring programs end to end — registration, assessments, interview scheduling and offers.",
-      "Manage relationships with placement cells across Tier-1 engineering and business institutions.",
-      "Partner with Head HR and senior leadership to translate hiring mandates into campus campaigns.",
-      "Lead on-site pool recruitment events, resolving queries and ensuring evaluation compliance in real time.",
-    ],
-    achievements: [
-      "Executed 100+ campus drives across 1,000+ universities, processing 10,000+ candidates.",
-      "Managed 700+ Training & Placement Officers during peak seasons.",
-      "Personally handled 3,000+ students on-site across North India campuses.",
-      "Built the internal “Pod Encyclopedia” to speed up onboarding and platform adoption.",
-    ],
-    learnings: [
-      "Scale is a coordination problem before it is a resourcing one.",
-      "Clear systems calm chaos faster than extra effort does.",
-    ],
-    technologies: ["Pod.ai ATS", "Assessment platforms", "Interview scheduling", "Workflow design"],
-  },
-  {
-    company: "ServerGuy / Breeze.io",
-    role: "Executive – Lead Generation",
-    domain: "Cloud Infrastructure · SaaS Growth",
-    period: "Apr 2024 – Feb 2025",
-    current: false,
-    summary:
-      "Driving demand for cloud hosting and managed infrastructure across global markets — from GPU and WordPress hosting to the Breeze.io Magento product.",
-    impact:
-      "Replaced scattered outreach with measurable pipelines, lifting qualified leads and cutting response time.",
-    responsibilities: [
-      "Lead prospecting for GPU, WooCommerce, WordPress and cloud hosting across the USA, Europe, UAE and India.",
-      "Design multi-channel outreach across LinkedIn Sales Navigator and cold email automation.",
-      "Run product pitches, partnership discussions and proposal creation for the Breeze.io Magento product.",
-      "Handle live webchat queries and streamline the lead-nurturing workflow.",
-    ],
-    achievements: [
-      "Identified 3,000+ high-value leads across four regions — plus 1,500+ qualified US leads in a single week for cloud hosting.",
-      "Increased Sales Qualified Leads by 30% through multi-channel sequencing.",
-      "Achieved 45% average email open rates via A/B tested drip campaigns.",
-      "Reduced lead response time by 40% and built 5+ recurring referral partnerships with Magento agencies.",
-    ],
-    learnings: [
-      "Consistent process beats occasional intensity in outreach.",
-      "Small experiments compound into large conversion gains.",
-    ],
-    technologies: ["Cloud & GPU hosting", "Breeze.io / Magento", "LinkedIn Sales Navigator", "Cold email automation"],
-  },
-  {
     company: "Zinple Info Solutions",
-    role: "Business Developer",
-    domain: "Enterprise SaaS · ERP",
+    role: "IT – Business Developer",
+    domain: "Enterprise SaaS · ERP · Automation",
     period: "Jul 2023 – Apr 2024",
     current: false,
     summary:
-      "Positioning enterprise software — SAP Business One, Odoo, RPA and custom ERP — and owning client relationships end to end.",
+      "Where I learned to understand business problems before recommending technology solutions.",
+    overview:
+      "Worked across Enterprise SaaS, ERP and automation products including SAP Business One, Odoo and RPA.",
+    contributions: [
+      "Generated 3,000+ qualified business opportunities across India, UAE and Saudi Arabia.",
+      "Supported website and LinkedIn content for international markets.",
+      "Contributed to customization of 4R Recycle ERP based on client requirements.",
+      "Worked directly with company leadership during client meetings and strategic discussions.",
+    ],
     impact:
-      "Learned to hold the full client relationship — from first message to a solution that actually fit.",
-    responsibilities: [
-      "Support client acquisition for SAP Business One, RPA, Odoo and custom ERP solutions.",
-      "Manage communication, follow-ups and relationships across the sales cycle.",
-      "Run cold email and social outreach targeting Indian and UAE markets.",
-      "Work directly with the director on client meetings and strategic initiatives.",
+      "Built early fluency in enterprise technology conversations and cross-border client engagement.",
+    learning:
+      "This experience taught me how businesses evaluate technology and how effective communication builds trust.",
+  },
+  {
+    company: "ServerGuy | Breeze.io",
+    role: "Business Development Executive",
+    domain: "Cloud Infrastructure · Global Demand",
+    period: "Apr 2024 – Feb 2025",
+    current: false,
+    summary:
+      "Developed a stronger understanding of global markets, customer research and enterprise outreach.",
+    overview:
+      "Focused on cloud infrastructure, managed hosting and strategic demand generation.",
+    contributions: [
+      "Identified and researched 4,500+ target B2B accounts across North America, Europe, UAE and India.",
+      "Built 5+ strategic Magento agency partnerships.",
+      "Increased Sales Qualified Leads by 30% through multi-channel outreach.",
+      "Improved campaign performance using market research and A/B testing.",
+      "Reduced customer response time by 40% through workflow improvements.",
     ],
-    achievements: [
-      "Identified 3,000+ high-value leads across India and the UAE.",
-      "Contributed to the customization of 4R Recycle ERP based on client needs.",
-      "Produced website and LinkedIn content for two markets.",
-      "Conducted competitive market research for consumer wellness brands.",
+    impact:
+      "Turned scattered outreach into measurable, repeatable pipelines across four regions.",
+    learning:
+      "This role strengthened my understanding of business development, customer engagement and international market strategy.",
+  },
+  {
+    company: "POD.ai",
+    role: "Senior Client Engagement Executive",
+    domain: "HR Technology · Program Coordination",
+    period: "Feb 2025 – Present",
+    current: true,
+    summary:
+      "Transitioned into managing large-scale recruitment operations, enterprise stakeholders and nationwide hiring execution.",
+    overview:
+      "Responsible for coordinating large hiring initiatives across universities, enterprise clients and internal teams.",
+    contributions: [
+      "Delivered 100+ recruitment drives.",
+      "Coordinated hiring across 1,200+ colleges and universities.",
+      "Managed recruitment workflows for 50,000+ candidates using the Pod.ai ATS.",
+      "Managed relationships with 700+ Training & Placement Officers.",
+      "Coordinated multiple concurrent national hiring programs.",
+      "Generated additional business opportunities through consultative cross-selling.",
+      "Led on-campus recruitment operations across North India supporting 3,000+ candidates.",
+      "Built the 80+ page Pod Encyclopedia knowledge repository reducing onboarding dependency.",
     ],
-    learnings: [
-      "Understanding the client's problem matters more than pitching the product.",
-      "In a startup, versatility is the real skill.",
-    ],
-    technologies: ["SAP Business One", "Odoo", "RPA", "ERP customization"],
+    impact:
+      "Turned high-pressure hiring seasons into structured, repeatable programs leadership could rely on.",
+    learning:
+      "This role transformed my understanding of stakeholder management, operational excellence, program coordination and scalable execution.",
   },
 ];
 
@@ -192,13 +175,13 @@ const Experience = () => {
         {/* Heading */}
         <div className="mb-20 text-center">
           <p className="mb-4 text-xs font-medium uppercase tracking-[0.3em] text-primary/80">
-            The Path So Far
+            Chapters
           </p>
           <h2 className="mb-6 text-4xl font-light tracking-tight text-foreground md:text-5xl">
             The <span className="gradient-text font-semibold">Journey</span>
           </h2>
           <p className="mx-auto max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-            Every role added a different perspective. Together they shaped how I think today.
+            Every role expanded my perspective. Together, they shaped the way I approach people, systems and execution.
           </p>
         </div>
 
@@ -249,7 +232,7 @@ const Experience = () => {
                     onClick={() => setSelected(i)}
                     className="group mt-6 inline-flex items-center gap-2 self-start rounded-full border border-white/10 bg-gradient-to-r from-primary/15 to-accent/10 px-5 py-2.5 text-sm font-medium text-foreground transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-[0_0_25px_hsla(var(--neon-blue)/0.2)]"
                   >
-                    Explore My Work
+                    Explore Experience
                     <ArrowRight className="h-4 w-4 text-primary transition-transform duration-300 group-hover:translate-x-1" />
                   </button>
                 </div>
@@ -287,32 +270,34 @@ const Experience = () => {
             <p className="mt-1 text-xs uppercase tracking-wider text-muted-foreground/70">{exp.domain}</p>
 
             <div className="mt-8 space-y-8">
-              <ModalList title="Responsibilities" items={exp.responsibilities} />
-              <ModalList title="Achievements" items={exp.achievements} />
-              <ModalList title="Key Learnings" items={exp.learnings} />
+              <ModalSection title="Overview">
+                <p className="text-sm leading-relaxed text-muted-foreground">{exp.overview}</p>
+              </ModalSection>
 
-              <div>
-                <h4 className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-primary/80">
-                  Technologies Used
-                </h4>
-                <div className="flex flex-wrap gap-2">
-                  {exp.technologies.map((tech) => (
-                    <span
-                      key={tech}
-                      className="rounded-full border border-white/10 bg-primary/5 px-3 py-1.5 text-xs text-muted-foreground"
-                    >
-                      {tech}
-                    </span>
+              <Divider />
+
+              <ModalSection title="Key Contributions">
+                <ul className="space-y-2.5 text-sm text-muted-foreground">
+                  {exp.contributions.map((item, j) => (
+                    <li key={j} className="flex items-start gap-2.5">
+                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                      <span className="leading-relaxed">{item}</span>
+                    </li>
                   ))}
-                </div>
-              </div>
+                </ul>
+              </ModalSection>
 
-              <div>
-                <h4 className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-primary/80">
-                  Impact
-                </h4>
+              <Divider />
+
+              <ModalSection title="Impact">
                 <p className="text-sm italic leading-relaxed text-foreground/90">"{exp.impact}"</p>
-              </div>
+              </ModalSection>
+
+              <Divider />
+
+              <ModalSection title="Key Learning">
+                <p className="text-sm leading-relaxed text-muted-foreground">{exp.learning}</p>
+              </ModalSection>
             </div>
           </div>
         </div>
@@ -321,18 +306,15 @@ const Experience = () => {
   );
 };
 
-const ModalList = ({ title, items }: { title: string; items: string[] }) => (
+const ModalSection = ({ title, children }: { title: string; children: React.ReactNode }) => (
   <div>
     <h4 className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-primary/80">{title}</h4>
-    <ul className="space-y-2.5 text-sm text-muted-foreground">
-      {items.map((item, j) => (
-        <li key={j} className="flex items-start gap-2.5">
-          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
-          <span className="leading-relaxed">{item}</span>
-        </li>
-      ))}
-    </ul>
+    {children}
   </div>
+);
+
+const Divider = () => (
+  <div className="h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 );
 
 export default Experience;
