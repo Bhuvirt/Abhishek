@@ -3,6 +3,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Download, ArrowDown } from "lucide-react";
 import resumeAsset from "@/assets/Abhishek_Choudhary_Resume.pdf.asset.json";
+import { getLenis } from "@/hooks/useSmoothScroll";
 
 gsap.registerPlugin(ScrollTrigger);
 
