@@ -5,6 +5,7 @@ import Hero from "@/components/Hero";
 import ImpactSnapshot from "@/components/ImpactSnapshot";
 import AboutMe from "@/components/AboutMe";
 import Experience from "@/components/Experience";
+import ByTheNumbers from "@/components/ByTheNumbers";
 import SelectedInitiatives from "@/components/SelectedInitiatives";
 import Skills from "@/components/Skills";
 import Contact from "@/components/Contact";
@@ -25,6 +26,7 @@ const Index = () => {
         <SectionReveal><ImpactSnapshot /></SectionReveal>
         <SectionReveal><AboutMe /></SectionReveal>
         <SectionReveal><Experience /></SectionReveal>
+        <ByTheNumbers />
         <SectionReveal><SelectedInitiatives /></SectionReveal>
         <SectionReveal><Skills /></SectionReveal>
         <SectionReveal><Contact /></SectionReveal>
