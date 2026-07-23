@@ -5,6 +5,7 @@ import Hero from "@/components/Hero";
 import ImpactSnapshot from "@/components/ImpactSnapshot";
 import AboutMe from "@/components/AboutMe";
 import Experience from "@/components/Experience";
+import HowICreateValue from "@/components/HowICreateValue";
 import ByTheNumbers from "@/components/ByTheNumbers";
 import SelectedInitiatives from "@/components/SelectedInitiatives";
 import Skills from "@/components/Skills";
@@ -26,6 +27,7 @@ const Index = () => {
         <SectionReveal><ImpactSnapshot /></SectionReveal>
         <SectionReveal><AboutMe /></SectionReveal>
         <SectionReveal><Experience /></SectionReveal>
+        <SectionReveal><HowICreateValue /></SectionReveal>
         <ByTheNumbers />
         <SectionReveal><SelectedInitiatives /></SectionReveal>
         <SectionReveal><Skills /></SectionReveal>
