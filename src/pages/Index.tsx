@@ -2,12 +2,11 @@ import { useState } from "react";
 import Preloader from "@/components/Preloader";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import ImpactSnapshot from "@/components/ImpactSnapshot";
 import AboutMe from "@/components/AboutMe";
 import Experience from "@/components/Experience";
 import HowICreateValue from "@/components/HowICreateValue";
-import ByTheNumbers from "@/components/ByTheNumbers";
 import BeyondMyRole from "@/components/BeyondMyRole";
+import ByTheNumbers from "@/components/ByTheNumbers";
 import Skills from "@/components/Skills";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
@@ -24,12 +23,11 @@ const Index = () => {
       <div style={{ opacity: loaded ? 1 : 0, transition: "opacity 0.6s ease" }}>
         <Navbar />
         <Hero />
-        <SectionReveal><ImpactSnapshot /></SectionReveal>
         <SectionReveal><AboutMe /></SectionReveal>
         <SectionReveal><Experience /></SectionReveal>
         <SectionReveal><HowICreateValue /></SectionReveal>
         <SectionReveal><BeyondMyRole /></SectionReveal>
-        <ByTheNumbers />
+        <SectionReveal><ByTheNumbers /></SectionReveal>
         <SectionReveal><Skills /></SectionReveal>
         <SectionReveal><Contact /></SectionReveal>
         <Footer />
