@@ -60,9 +60,59 @@
 
 @layer utilities {
   .glass {
-    background: hsla(var(--glass-bg) / 0.6);
-    backdrop-filter: blur(20px);
+    background: hsla(var(--glass-bg) / 0.55);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid hsla(var(--glass-border) / 0.28);
+  }
+
+  .card-surface {
+    @apply glass rounded-2xl transition-all duration-300;
+  }
+
+  .card-hover {
+    @apply hover:-translate-y-1 hover:border-primary/30;
+    box-shadow: 0 0 0 0 hsla(var(--neon-blue) / 0);
+  }
+  .card-hover:hover {
+    box-shadow: 0 12px 40px -12px hsla(var(--neon-blue) / 0.18);
+  }
+
+  /* Unified button system — Apple/Linear/Stripe restraint */
+  .btn-base {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-8 py-3.5 text-sm font-medium transition-all duration-300 ease-out;
+  }
+  .btn-primary {
+    @apply btn-base text-foreground;
+    background: linear-gradient(135deg, hsla(var(--primary)/0.18), hsla(var(--accent)/0.12));
+    border: 1px solid hsla(var(--glass-border) / 0.35);
+    backdrop-filter: blur(18px);
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    border-color: hsla(var(--primary) / 0.5);
+    box-shadow: 0 10px 40px -10px hsla(var(--neon-blue) / 0.35);
+  }
+  .btn-secondary {
+    @apply btn-base text-foreground;
+    background: hsla(var(--glass-bg) / 0.5);
     border: 1px solid hsla(var(--glass-border) / 0.3);
+    backdrop-filter: blur(18px);
+  }
+  .btn-secondary:hover {
+    transform: translateY(-2px);
+    border-color: hsla(var(--primary) / 0.35);
+    box-shadow: 0 8px 30px -12px hsla(var(--neon-blue) / 0.22);
+  }
+
+  .eyebrow {
+    @apply text-xs font-medium uppercase tracking-[0.28em] text-primary/80;
+  }
+  .section-title {
+    @apply text-3xl font-light tracking-tight text-foreground sm:text-4xl md:text-5xl;
+  }
+  .section-lede {
+    @apply mx-auto max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg;
   }
 
   .glow-blue {
