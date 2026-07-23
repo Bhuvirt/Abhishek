@@ -117,16 +117,13 @@ const HowICreateValue = () => {
       <div className="relative mx-auto max-w-6xl">
         {/* Header */}
         <div ref={headerRef} className="mb-20 text-center" style={{ opacity: 0 }}>
-          <p className="mb-4 text-xs font-medium uppercase tracking-[0.3em] text-primary/80">
-            How I Create Value
-          </p>
-          <h2 className="mx-auto max-w-3xl text-3xl font-light tracking-tight text-foreground sm:text-4xl md:text-5xl">
-            The mindset behind{" "}
-            <span className="gradient-text font-medium">my work</span>
+          <p className="eyebrow mb-4">How I Create Value</p>
+          <h2 className="section-title mx-auto max-w-3xl">
+            The mindset behind <span className="gradient-text font-medium">my work</span>
           </h2>
-          <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-            Across every role and industry, I&apos;ve consistently found myself solving a similar
-            set of challenges. These are the areas where I naturally create the most value.
+          <p className="section-lede mt-5">
+            Across every role, I've found myself solving a similar set of challenges —
+            these are the areas where I naturally create the most value.
           </p>
         </div>
 

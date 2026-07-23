@@ -86,23 +86,23 @@ const Hero = () => {
         {/* Main Headline */}
         <h1
           ref={headlineRef}
-          className="mx-auto mb-14 max-w-5xl text-[2.75rem] font-bold leading-[1.08] tracking-[-0.03em] text-foreground sm:text-5xl md:text-6xl lg:text-[5rem]"
+          className="mx-auto mb-12 max-w-5xl text-[2.6rem] font-light leading-[1.08] tracking-[-0.03em] text-foreground sm:text-5xl md:text-6xl lg:text-[4.75rem]"
           style={{ opacity: 0 }}
         >
           Coordinating
           <br className="hidden sm:block" />
-          <span className="gradient-text">People</span>, <span className="gradient-text">Processes</span> &
+          <span className="gradient-text font-medium">People</span>, <span className="gradient-text font-medium">Processes</span> &
           <br className="hidden sm:block" />
-          <span className="gradient-text">Execution</span> at Scale
+          <span className="gradient-text font-medium">Execution</span> at Scale
         </h1>
 
         {/* Supporting Copy */}
         <p
           ref={descRef}
-          className="mx-auto mb-10 max-w-2xl text-base leading-[1.7] text-muted-foreground/90 sm:text-lg md:text-xl"
+          className="mx-auto mb-10 max-w-2xl text-base leading-[1.7] text-muted-foreground sm:text-lg md:text-[1.2rem]"
           style={{ opacity: 0 }}
         >
-          I help organizations transform complex operations into structured, scalable execution by connecting people, technology, and workflows to deliver meaningful business outcomes.
+          I help organizations turn complex operations into structured, scalable execution — connecting people, technology and workflows to deliver meaningful outcomes.
         </p>
 
         {/* Identity */}
@@ -120,11 +120,11 @@ const Hero = () => {
         </div>
 
         {/* CTAs */}
-        <div ref={ctaRef} className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+        <div ref={ctaRef} className="flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
           <button
-            onClick={() => scrollTo("impact")}
-            className="group inline-flex items-center gap-2.5 glass rounded-full px-9 py-4 text-sm font-medium text-foreground transition-all duration-300 hover:-translate-y-1 hover:scale-[1.03] hover:border-primary/50 hover:shadow-[0_0_40px_hsla(var(--neon-blue)/0.3),0_0_80px_hsla(var(--neon-violet)/0.15)] sm:text-base"
-            style={{ opacity: 0, background: "linear-gradient(135deg, hsla(var(--primary)/0.18), hsla(var(--accent)/0.12))" }}
+            onClick={() => scrollTo("about")}
+            className="btn-primary group"
+            style={{ opacity: 0 }}
           >
             View Journey
             <ArrowDown className="h-4 w-4 transition-transform duration-300 group-hover:translate-y-0.5" />
@@ -132,7 +132,7 @@ const Hero = () => {
           <a
             href={resumeAsset.url}
             download="Abhishek_Choudhary_Resume.pdf"
-            className="group inline-flex items-center gap-2.5 glass rounded-full border border-white/10 px-9 py-4 text-sm font-medium text-foreground transition-all duration-300 hover:-translate-y-1 hover:scale-[1.03] hover:border-primary/40 hover:shadow-[0_0_30px_hsla(var(--neon-blue)/0.2),0_0_60px_hsla(var(--neon-violet)/0.12)] sm:text-base"
+            className="btn-secondary group"
             style={{ opacity: 0 }}
           >
             <Download className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5" />

@@ -230,7 +230,7 @@ const Experience = () => {
 
                   <button
                     onClick={() => setSelected(i)}
-                    className="group mt-6 inline-flex items-center gap-2 self-start rounded-full border border-white/10 bg-gradient-to-r from-primary/15 to-accent/10 px-5 py-2.5 text-sm font-medium text-foreground transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-[0_0_25px_hsla(var(--neon-blue)/0.2)]"
+                    className="btn-secondary group mt-6 self-start !px-5 !py-2.5"
                   >
                     Explore Experience
                     <ArrowRight className="h-4 w-4 text-primary transition-transform duration-300 group-hover:translate-x-1" />

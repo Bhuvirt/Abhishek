@@ -233,17 +233,14 @@ const BeyondMyRole = () => {
 
       <div className="relative mx-auto max-w-6xl">
         <div ref={headerRef} className="mb-20 text-center" style={{ opacity: 0 }}>
-          <p className="mb-4 text-xs font-medium uppercase tracking-[0.3em] text-primary/80">
-            Beyond My Role
-          </p>
-          <h2 className="mx-auto max-w-3xl text-3xl font-light tracking-tight text-foreground sm:text-4xl md:text-5xl">
+          <p className="eyebrow mb-4">Beyond My Role</p>
+          <h2 className="section-title mx-auto max-w-3xl">
             Initiatives that began{" "}
             <span className="gradient-text font-medium">outside a job description</span>
           </h2>
-          <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-            The most meaningful contributions often begin outside a job description. These
-            initiatives reflect moments where I took ownership, explored new ideas and built
-            solutions that created lasting value.
+          <p className="section-lede mt-5">
+            Moments where I took ownership, explored new ideas and built solutions
+            that created lasting value.
           </p>
         </div>
 

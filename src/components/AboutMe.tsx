@@ -98,30 +98,25 @@ const AboutMe = () => {
 
         {/* Right — Narrative */}
         <div ref={contentRef} className="max-w-xl">
-          <p className="mb-5 text-xs font-medium uppercase tracking-[0.3em] text-primary/80">
-            About
-          </p>
+          <p className="eyebrow mb-5">About</p>
           <h2 className="mb-10 text-4xl font-light tracking-tight text-foreground md:text-5xl">
-            Nice to <span className="gradient-text font-semibold">meet you.</span>
+            Nice to <span className="gradient-text font-medium">meet you.</span>
           </h2>
 
-          <div className="space-y-6 text-base leading-relaxed text-muted-foreground sm:text-lg">
+          <div className="space-y-5 text-base leading-relaxed text-muted-foreground sm:text-lg">
             <p>I'm someone who enjoys understanding how things work.</p>
             <p>
-              Throughout my career I've naturally gravitated toward environments where people,
-              technology and business come together to solve meaningful problems.
+              I gravitate toward environments where people, technology and business
+              come together to solve meaningful problems.
             </p>
             <p>
-              Whether working with customers, coordinating operations, supporting enterprise software
-              adoption or improving internal workflows, I've always found satisfaction in bringing
-              clarity to complexity.
+              Whether coordinating operations, supporting enterprise software or
+              improving internal workflows, I find satisfaction in bringing clarity
+              to complexity.
             </p>
             <p>
-              I enjoy asking better questions, improving existing systems and building relationships
-              that make execution smoother for everyone involved.
-            </p>
-            <p>
-              That's the mindset I continue to bring into every opportunity.
+              Better questions, better systems, better relationships — that's the
+              mindset I bring into every opportunity.
             </p>
           </div>
 
