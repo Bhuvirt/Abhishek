@@ -27,6 +27,7 @@ const Index = () => {
         <SectionReveal><ImpactSnapshot /></SectionReveal>
         <SectionReveal><AboutMe /></SectionReveal>
         <SectionReveal><Experience /></SectionReveal>
+        <SectionReveal><HowICreateValue /></SectionReveal>
         <ByTheNumbers />
         <SectionReveal><SelectedInitiatives /></SectionReveal>
         <SectionReveal><Skills /></SectionReveal>
