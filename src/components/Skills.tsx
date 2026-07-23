@@ -99,15 +99,12 @@ const Skills = () => {
     <section ref={sectionRef} id="skills" className="relative px-6 py-28 md:py-40">
       <div className="mx-auto max-w-6xl">
         <div ref={headerRef} className="mb-16 text-center" style={{ opacity: 0 }}>
-          <span className="mb-4 inline-block text-xs font-semibold uppercase tracking-[0.2em] text-primary">
-            Capabilities
-          </span>
-          <h2 className="mb-5 text-3xl font-bold text-foreground sm:text-4xl md:text-5xl">
-            Skills & <span className="gradient-text">Tools</span>
+          <p className="eyebrow mb-4">Capabilities</p>
+          <h2 className="section-title mb-5 font-light">
+            Skills & <span className="gradient-text font-medium">Tools</span>
           </h2>
-          <p className="mx-auto max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
-            The capabilities, platforms, and working knowledge that support my
-            day-to-day work.
+          <p className="section-lede">
+            The capabilities, platforms and working knowledge behind the day-to-day.
           </p>
         </div>
 

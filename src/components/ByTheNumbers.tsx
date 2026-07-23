@@ -189,16 +189,14 @@ const ByTheNumbers = () => {
       <div className="relative mx-auto max-w-6xl">
         {/* Header */}
         <div ref={headerRef} className="mb-20 text-center" style={{ opacity: 0 }}>
-          <p className="mb-4 text-xs font-medium uppercase tracking-[0.3em] text-primary/80">
-            By the Numbers
-          </p>
-          <h2 className="mx-auto max-w-3xl text-3xl font-light tracking-tight text-foreground sm:text-4xl md:text-5xl">
+          <p className="eyebrow mb-4">By the Numbers</p>
+          <h2 className="section-title mx-auto max-w-3xl">
             The scale of environments{" "}
-            <span className="gradient-text font-medium">I have worked in</span>
+            <span className="gradient-text font-medium">I've worked in</span>
           </h2>
-          <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-            Every role taught me something different. These numbers represent the scale of
-            the people, programs and business outcomes I&apos;ve had the opportunity to contribute to.
+          <p className="section-lede mt-5">
+            Every role taught me something different. These numbers represent the
+            scale of the people, programs and outcomes I've contributed to.
           </p>
         </div>
 

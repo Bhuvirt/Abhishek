@@ -69,15 +69,10 @@ const Contact = () => {
         </div>
 
         <div className="contact-reveal mx-auto mb-16 max-w-2xl text-center">
-          <p className="text-sm leading-relaxed text-muted-foreground sm:text-base">
+          <p className="text-base leading-relaxed text-muted-foreground sm:text-lg">
             I enjoy working with people who care about solving meaningful
-            problems, improving systems and creating better experiences for
-            customers, teams and businesses.
-          </p>
-          <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
-            Whether it's streamlining operations, supporting growth or turning
-            complex processes into clear execution, I'm always interested in
-            meaningful conversations with people building ambitious things.
+            problems, improving systems and building better experiences —
+            for customers, teams and businesses alike.
           </p>
         </div>
 
@@ -150,7 +145,7 @@ const Contact = () => {
         <div className="contact-reveal text-center">
           <a
             href={`mailto:${EMAIL}?subject=Let's%20build%20something%20meaningful`}
-            className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-primary to-accent px-10 py-4 text-sm font-medium text-primary-foreground transition-all duration-300 hover:-translate-y-1 hover:scale-[1.03] hover:shadow-[0_0_40px_hsla(var(--neon-blue)/0.25),0_0_80px_hsla(var(--neon-violet)/0.12)]"
+            className="btn-primary group"
           >
             Start a Conversation
             <Mail className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
