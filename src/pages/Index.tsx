@@ -5,6 +5,7 @@ import Hero from "@/components/Hero";
 import ImpactSnapshot from "@/components/ImpactSnapshot";
 import AboutMe from "@/components/AboutMe";
 import Experience from "@/components/Experience";
+import HowICreateValue from "@/components/HowICreateValue";
 import ByTheNumbers from "@/components/ByTheNumbers";
 import SelectedInitiatives from "@/components/SelectedInitiatives";
 import Skills from "@/components/Skills";
