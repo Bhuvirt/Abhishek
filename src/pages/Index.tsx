@@ -7,7 +7,7 @@ import AboutMe from "@/components/AboutMe";
 import Experience from "@/components/Experience";
 import HowICreateValue from "@/components/HowICreateValue";
 import ByTheNumbers from "@/components/ByTheNumbers";
-import SelectedInitiatives from "@/components/SelectedInitiatives";
+import BeyondMyRole from "@/components/BeyondMyRole";
 import Skills from "@/components/Skills";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
@@ -29,7 +29,7 @@ const Index = () => {
         <SectionReveal><Experience /></SectionReveal>
         <SectionReveal><HowICreateValue /></SectionReveal>
         <ByTheNumbers />
-        <SectionReveal><SelectedInitiatives /></SectionReveal>
+        <SectionReveal><BeyondMyRole /></SectionReveal>
         <SectionReveal><Skills /></SectionReveal>
         <SectionReveal><Contact /></SectionReveal>
         <Footer />
