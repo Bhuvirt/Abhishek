@@ -197,8 +197,8 @@ const ByTheNumbers = () => {
             <span className="gradient-text font-medium">I have worked in</span>
           </h2>
           <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-            A few numbers that reflect the scale of the teams, programs and operations
-            I&apos;ve had the opportunity to contribute to.
+            Every role taught me something different. These numbers represent the scale of
+            the people, programs and business outcomes I&apos;ve had the opportunity to contribute to.
           </p>
         </div>
 
