@@ -18,21 +18,21 @@ const leftMetrics: Metric[] = [
     suffix: "+",
     label: "Candidates",
     description:
-      "Supporting recruitment operations through the Pod.ai ATS across multiple nationwide hiring programs.",
+      "Supported recruitment operations and candidate journeys through the Pod.ai ATS across nationwide hiring programs.",
   },
   {
-    value: 700,
+    value: 1500,
     suffix: "+",
     label: "Placement Leaders",
     description:
-      "Built and managed relationships with Training & Placement Officers to streamline hiring execution.",
+      "Built relationships across universities while actively managing 700+ stakeholders during peak hiring cycles.",
   },
   {
     value: 80,
     suffix: "+ Pages",
     label: "Knowledge Repository",
     description:
-      "Created the Pod Encyclopedia to simplify onboarding and improve knowledge sharing across teams.",
+      "Created an operational knowledge base covering eight product lines to standardize onboarding and accelerate knowledge sharing.",
   },
 ];
 
@@ -45,18 +45,18 @@ const rightMetrics: Metric[] = [
       "Collaborated with institutions across India to coordinate large-scale campus recruitment initiatives.",
   },
   {
-    value: 100,
-    suffix: "+",
-    label: "Hiring Programs",
+    value: 13,
+    suffix: "",
+    label: "Enterprise Accounts",
     description:
-      "Coordinated recruitment campaigns for enterprise clients across diverse industries.",
+      "Supported customer delivery across Fortune 500, publicly listed and high-growth organizations spanning manufacturing, BFSI, technology, healthcare and consulting.",
   },
   {
     value: 4500,
     suffix: "+",
     label: "Business Accounts",
     description:
-      "Researched and qualified enterprise accounts across North America, Europe, UAE and India.",
+      "Researched and qualified enterprise prospects across North America, Europe, UAE and India through strategic account mapping.",
   },
 ];
 
@@ -197,8 +197,8 @@ const ByTheNumbers = () => {
             <span className="gradient-text font-medium">I have worked in</span>
           </h2>
           <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-            A few numbers that reflect the scale of the teams, programs and operations
-            I&apos;ve had the opportunity to contribute to.
+            Every role taught me something different. These numbers represent the scale of
+            the people, programs and business outcomes I&apos;ve had the opportunity to contribute to.
           </p>
         </div>
 

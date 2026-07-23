@@ -28,8 +28,8 @@ const Index = () => {
         <SectionReveal><AboutMe /></SectionReveal>
         <SectionReveal><Experience /></SectionReveal>
         <SectionReveal><HowICreateValue /></SectionReveal>
-        <ByTheNumbers />
         <SectionReveal><BeyondMyRole /></SectionReveal>
+        <ByTheNumbers />
         <SectionReveal><Skills /></SectionReveal>
         <SectionReveal><Contact /></SectionReveal>
         <Footer />
